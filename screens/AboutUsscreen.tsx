@@ -4,7 +4,7 @@ export const AboutUsScreen=({navigation}:any)=>{
     return(
         <View>
        <Text>About Us</Text>
-          <Button title="Go Home"  onPress={()=>{navigation.pop()}}></Button>
+          <Button title="خانه "  onPress={()=>{navigation.pop()}}></Button>
         </View>
     )
 }
