@@ -1,31 +1,36 @@
 import { background } from 'native-base/lib/typescript/theme/styled-system';
-import React from 'react'
+import React, { useState } from 'react'
 import { TouchableHighlight,Image,View,Text,StyleSheet  } from 'react-native';
 const styles = StyleSheet.create({
-    container: {
-      paddingTop: 50,
+    itemcontainer: {
+      alignItems:'center',
+      backgroundColor:'#FDB9FC',
+      width:90,
+      margin:5,
+     marginTop:20
     },
-    tinyLogo: {
-      width: 50,
-      height: 50,
+    
+    itemImage:{
+      resizeMode:'contain',
+      width:80
     },
-    logo: {
-      width: 200,
-      height: 200,
-    },
+    itemText:{
+      margin:10,
+    }
+    
   });
-export const MenuItem=({navigation}:any)=>{
+export const MenuItem=({navigation,img,text}:any)=>{
+  const [style, setStyle] = useState('');
+const changeStyle=()=>{
+  console.log("change")
+  setStyle('#F2FA5A')
+}
 return(
-    <TouchableHighlight>
-       <View>
-           <Image source={require('../assets/images/drug.png')}  ></Image>
-           <Image style={styles.tinyLogo} source={{ 
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}  ></Image>
-         <Image style={styles.logo} source={{ 
-          uri: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Pivot_Wave.gif',
-        }}  ></Image>
 
+    <TouchableHighlight  activeOpacity={0.5} >
+       <View  style={styles.itemcontainer}>
+           <Image source={img} style={styles.itemImage}></Image>
+           <Text style={styles.itemText} >{text}</Text>
       </View>
     </TouchableHighlight>
 );
