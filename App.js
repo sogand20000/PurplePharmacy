@@ -4,6 +4,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './screens/HomeScreen';
 import {AboutUsScreen} from './screens/AboutUsscreen';
 const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator();
+
 import {
   SafeAreaView,
   ScrollView,
@@ -16,13 +19,19 @@ import {
  const App =()=>{
   return(
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
+   {/*  <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="AboutUs"
       options={{title:'درباره ما'}}
       component={AboutUsScreen} />
 
-      </Stack.Navigator>
+      </Stack.Navigator> */}
+
+      <Tab.Navigator >
+      <Tab.Screen name="Home" component={HomeScreen}  />
+      <Tab.Screen name="AboutUsScreen" component={AboutUsScreen} />
+    </Tab.Navigator>
+
     </NavigationContainer>
   )
  }
