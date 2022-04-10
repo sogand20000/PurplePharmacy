@@ -1,0 +1,3 @@
+//Pre React Native  run this in the console:
+
+adb logcat *:S ReactNative:V ReactNativeJS:V

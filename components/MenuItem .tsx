@@ -1,11 +1,12 @@
 import { background } from 'native-base/lib/typescript/theme/styled-system';
 import React, { useState } from 'react'
-import { TouchableHighlight,Image,View,Text,StyleSheet  } from 'react-native';
+import { TouchableHighlight,Image,View,Text,StyleSheet ,Platform } 
+from 'react-native';
 const styles = StyleSheet.create({
     itemcontainer: {
       alignItems:'center',
-      backgroundColor:'#FDB9FC',
-      width:90,
+      backgroundColor:Platform.OS==='android'?'#CCCCFF':'red',
+     width:90,
       margin:5,
      marginTop:20
     },

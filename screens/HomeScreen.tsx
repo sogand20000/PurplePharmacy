@@ -34,7 +34,7 @@ const styles=StyleSheet.create({
        <View>
        <Button
              title="درماره ما"
-               onPress={() =>navigation.push('AboutUs')}></Button>
+               onPress={() =>navigation.navigate('AboutUs')}></Button>
       </View>
 
     </ScrollView>
