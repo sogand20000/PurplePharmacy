@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
       backgroundColor:Platform.OS==='android'?'#CCCCFF':'red',
      width:90,
       margin:5,
-     marginTop:20
+     marginTop:20,
+     height:100,
     },
     
     itemImage:{
@@ -20,15 +21,11 @@ const styles = StyleSheet.create({
     }
     
   });
-export const MenuItem=({navigation,img,text}:any)=>{
-  const [style, setStyle] = useState('');
-const changeStyle=()=>{
-  console.log("change")
-  setStyle('#F2FA5A')
-}
+export const MenuItem=({navigation,img,text,onPress}:any)=>{
+  
 return(
 
-    <TouchableHighlight  activeOpacity={0.5} >
+    <TouchableHighlight onPress={onPress}>
        <View  style={styles.itemcontainer}>
            <Image source={img} style={styles.itemImage}></Image>
            <Text style={styles.itemText} >{text}</Text>
