@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen,AboutUsScreen,DrugcategoryScreen} from './screens';
+import {HomeScreen,AboutUsScreen,DrugcategoryScreen,DrugScreen} from './screens';
 
 import {NativeBaseProvider} from 'native-base';
 
@@ -29,10 +29,9 @@ import {
       <Stack.Screen name="AboutUs"
       options={{title:'درباره ما'}}
       component={AboutUsScreen} />
-   <Stack.Screen name="DrugcategoryScreen"
-      options={{title:'گروهیندی داروها'}}
-      component={DrugcategoryScreen} />
-      </Stack.Navigator> 
+    <Stack.Screen name="DrugcategoryScreen" options={{title:'گروهیندی داروها'}} component={DrugcategoryScreen} />
+    <Stack.Screen name="Drug" options={{title:'داروها'}}component={DrugScreen} />
+   </Stack.Navigator> 
 
     {/*    <Tab.Navigator >
       <Tab.Screen name="Home" component={HomeScreen}  />

@@ -1,4 +1,3 @@
-import { Container } from 'native-base';
 import React from 'react';
 import {Button,ScrollView ,StyleSheet} from 'react-native';
 
@@ -17,9 +16,7 @@ const styles=StyleSheet.create({
     <ScrollView >
      
        <View style={styles.parent} >
-         
              <MenuItem  img={require('../assets/images/icons8-hospital-3-48.png')} text={'دسته بندی داروها'} onPress={()=>navigation.navigate('DrugcategoryScreen')}></MenuItem>
-            
              <MenuItem  img={require('../assets/images/icons8-doctors-bag-48.png')} text={'داروخانه'}onPress={()=>navigation.navigate('DrugcategoryScreen')}></MenuItem>
              <MenuItem  img={require('../assets/images/icons8-teapot-48.png')} text={'دمنوش'} onPress={()=>navigation.navigate('DrugcategoryScreen')}></MenuItem>
              <MenuItem  img={require('../assets/images/icons8-cherry-48.png')} text={'میوه'} onPress={()=>navigation.navigate('DrugcategoryScreen')}></MenuItem>
