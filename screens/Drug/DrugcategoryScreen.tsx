@@ -43,7 +43,7 @@ export const DrugcategoryScreen=({navigation}:any)=>{
         <View>
           {data.length===0 && <Spinner color="indigo.500"/>}
           
-          <FlatList data={data} renderItem={item=>(
+          <FlatList data={data} keyExtractor={item => item.id + item.name}   renderItem={item=>(
             <TouchableHighlight onPress={()=>navigation.navigate('Drug',item.item)}>
                <VStack>
                  
@@ -61,10 +61,7 @@ export const DrugcategoryScreen=({navigation}:any)=>{
           
           )}>
           </FlatList>
-            <Text>{data.length}</Text>
-            <Button title="خانه">
-
-            </Button>
+            <Button title="خانه"> </Button>
         </View>
     )
 }
