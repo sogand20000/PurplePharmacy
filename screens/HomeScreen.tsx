@@ -26,12 +26,9 @@ const styles=StyleSheet.create({
              <MenuItem  img={require('../assets/images/icons8-teapot-48.png')} text={'دمنوش'} onPress={()=>navigation.navigate('DrugcategoryScreen')}></MenuItem>
              <MenuItem  img={require('../assets/images/icons8-teapot-48.png')} text={'دمنوش'} onPress={()=>navigation.navigate('DrugcategoryScreen')}></MenuItem>
 
-             
        </View>
        <View>
-       <Button
-             title="درماره ما"
-               onPress={() =>navigation.navigate('AboutUs')}></Button>
+       
       </View>
 
     </ScrollView>

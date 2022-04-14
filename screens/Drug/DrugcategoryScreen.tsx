@@ -1,4 +1,5 @@
-import { useToast,FlatList,Box, HStack, Avatar, CheckIcon, Icon ,Image, VStack, Skeleton, Spinner} from 'native-base';
+import { useToast,FlatList,Box, HStack, Avatar, CheckIcon, Icon ,Image, VStack, Skeleton, Spinner,Divider} from 'native-base';
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 import React, { useEffect, useState } from 'react';
 import {Button, Text, TouchableHighlight, View,StyleSheet} from 'react-native';
 import api from '../../api';
@@ -9,14 +10,16 @@ const styles=StyleSheet.create({
        margin:15,
   },
   item:{
-    //flexDirection:'row',
-   //flexGrow:3,
-   padding:5,
+    padding:5,
   },
   itemEnglishName:{
     fontSize:13,
     fontWeight:'900'
-  }
+  },
+  Divider:{
+    backgroundColor:"purple",
+     width:400,
+  },
 })
 
 export const DrugcategoryScreen=({navigation}:any)=>{
@@ -44,10 +47,10 @@ export const DrugcategoryScreen=({navigation}:any)=>{
           {data.length===0 && <Spinner color="indigo.500"/>}
           
           <FlatList data={data} keyExtractor={item => item.id + item.name}   renderItem={item=>(
-            <TouchableHighlight onPress={()=>navigation.navigate('Drug',item.item)}>
+            <TouchableHighlight onPress={()=>navigation.navigate('DrugLis',item.item)}>
                <VStack>
                  
-                    <Box style={styles.item} borderBottomWidth="1" borderBottomColor="#46244C" marginTop={5}>
+                    <Box style={styles.item} marginTop={5}>
                     <VStack>
                       <Text style={styles.itemEnglishName} >  {item.item.name}</Text>
                     </VStack>
@@ -55,13 +58,14 @@ export const DrugcategoryScreen=({navigation}:any)=>{
                         <Image source={require('../../assets/images/icons8-pills-48.png')}   alt="دارو" />
                         <Text style={styles.textStyle}> {item.item.persianName}</Text>
                     </VStack>
+                    <Divider   style={styles.Divider} />
                </Box>
                </VStack>
             </TouchableHighlight>
           
           )}>
           </FlatList>
-            <Button title="خانه"> </Button>
+          <Button   title="برگشت" onPress={() =>navigation.pop()}></Button>
         </View>
     )
 }

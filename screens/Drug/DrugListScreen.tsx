@@ -1,4 +1,4 @@
-import { Box, FlatList, VStack,Image, Fab, Spinner } from 'native-base';
+import { Box, FlatList, VStack,Image, Spinner,Divider } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import {Button, Text, TouchableHighlight, View,StyleSheet, RefreshControl} from 'react-native';
 import api from '../../api';
@@ -10,10 +10,14 @@ const styles=StyleSheet.create({
   englishName:{
     fontSize:13,
     fontWeight:'900'
-  }
+  },
+  Divider:{
+    backgroundColor:"purple",
+     width:400,
+  },
 })
 
-export const DrugScreen=({navigation, route}: any) => {
+export const DrugListScreen=({navigation, route}: any) => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState<DrugModel[]>([]);
   const [loading, setLoading] = useState(false);
@@ -26,8 +30,7 @@ const LoadData=async (page:number) => {
   let response = await api.get<DrugModel[]>(
     `drugs?categoryId=${route.params.id}&_limit=20&_page=${page}`,
   );
-/*   let response= await api.get(`drugs?categoryId=${route.params.id}&_Limit=10_page=${page}`,)
- */ if(page===1){
+ if(page===1){
    setData(response.data);
  }
  else{
@@ -59,20 +62,20 @@ const LoadData=async (page:number) => {
         onRefresh={refresh}></RefreshControl>
        }
        renderItem={item=>(
-            <TouchableHighlight onPress={()=>navigation.navigate('Drug',item.item)}>
+            <TouchableHighlight onPress={()=>navigation.navigate('DrugDetail',item.item)}>
                <VStack>
-                    <Box  borderBottomWidth="1" borderBottomColor="#46244C" marginTop={1}>
+                    <Box marginTop={1}>
                       <Text style={styles.englishName}>{item.item.name}</Text>
                         <Image source={require('../../assets/images/icons8-pills-48.png')}   alt="دارو" />
                  </Box>
+                 <Divider   style={styles.Divider} />
+
                </VStack>
             </TouchableHighlight>
           
           )}>
           </FlatList>
-          <Button
-             title="خانه"
-               onPress={() =>navigation.navigate('Home')}></Button>
+          <Button  title="برگشت" onPress={() =>navigation.pop()}></Button>
         </View>
     )
 } 
