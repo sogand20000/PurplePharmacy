@@ -5,7 +5,3 @@
 Use Component nativebase
    https://docs.nativebase.io/
 
-
-      <Stack.Screen name="DrugcategoryScreen"
-      options={{title:'گروهیندی داروها'}}
-      component={DrugcategoryScreen} />

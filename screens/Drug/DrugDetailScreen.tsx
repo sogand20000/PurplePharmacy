@@ -1,4 +1,4 @@
-import { Box, VStack ,Divider, Heading, Center } from 'native-base';
+import { Box, VStack ,Divider, Heading, Center ,Skeleton} from 'native-base';
 import React, { useEffect } from 'react';
 import {Button, Text, View,StyleSheet, ScrollView} from 'react-native';
 import {DrugModel} from '../../model/DrugModel'
@@ -38,9 +38,18 @@ export const DrugDetailScreen=({navigation, route}:any)=>{
       })
      }, [])
      
+
+    
+
+
     return(
+     
         <ScrollView >
-          
+         {drug.name.length===0 &&
+          <Skeleton lines={4} px="4"/>
+          &&
+          <Skeleton.Text  px="4"/>
+      }
           <Box style={style.Box}>
             <Heading style={style.Heading}>نام</Heading>
             <Divider  style={style.Divider}  />
