@@ -1,33 +1,8 @@
 import { Box, VStack ,Divider, Heading, Center ,Skeleton} from 'native-base';
 import React, { useEffect } from 'react';
 import {Button, Text, View,StyleSheet, ScrollView} from 'react-native';
-import {DrugModel} from '../../model/DrugModel'
-const style=StyleSheet.create({
-
-  Heading:{
-    textAlign: "center",
-    marginBottom:5
-  },
-  Text:{
-    textAlign: "center",
-    paddingTop:20,
-    fontSize:15,
-    marginBottom:20
-
-  },
-
-  Divider:{
-    backgroundColor:"purple",
-     width:200,
-  },
-
-  Box:{
-    alignItems:"center",
-     backgroundColor:'white' ,
-     marginBottom:5
-  },
-})
-
+import {DrugModel} from '../../model/DrugModel';
+import {style} from "../../assets/style/detail";
 
 export const DrugDetailScreen=({navigation, route}:any)=>{
   const drug: DrugModel = route.params;
@@ -38,10 +13,6 @@ export const DrugDetailScreen=({navigation, route}:any)=>{
       })
      }, [])
      
-
-    
-
-
     return(
      
         <ScrollView >

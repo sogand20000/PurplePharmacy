@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer,Theme } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen,AboutUsScreen,DrugcategoryScreen,DrugListScreen,DrugDetailScreen} from './screens';
+import {HomeScreen,AboutUsScreen,DrugcategoryScreen,DrugListScreen,DrugDetailScreen,AraghijatListScreen,AraghijatDetailScreen} from './screens';
 
 import {NativeBaseProvider} from 'native-base';
 
@@ -43,8 +43,10 @@ const MyTheme = {
     <Stack.Screen name="خانه" component={HomeScreen} />
     <Stack.Screen name="درباره ما" options={{title:'درباره ما'}} component={AboutUsScreen} />
     <Stack.Screen name="DrugcategoryScreen" options={{title:'گروه بندی داروها'}} component={DrugcategoryScreen} />
-    <Stack.Screen name="DrugLis" options={{title:'داروها'}}component={DrugListScreen} />
+    <Stack.Screen name="DrugList" options={{title:'داروها'}}component={DrugListScreen} />
     <Stack.Screen name="DrugDetail" options={{title:'جزییات'}}component={DrugDetailScreen} />
+    <Stack.Screen name="AraghijatList" options={{title:'عرقیجات'}}component={AraghijatListScreen} />
+    <Stack.Screen name="AraghijatDetail" options={{title:'عرقیجات'}}component={AraghijatDetailScreen} />
 
    </Stack.Navigator> 
 

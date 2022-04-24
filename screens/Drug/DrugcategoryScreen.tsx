@@ -3,24 +3,8 @@ import { color } from 'native-base/lib/typescript/theme/styled-system';
 import React, { useEffect, useState } from 'react';
 import {Button, Text, TouchableHighlight, View,StyleSheet} from 'react-native';
 import api from '../../api';
-import {DrugCategoryModel} from '../../model/DrugCategoryModel'
-const styles=StyleSheet.create({
-
-  textStyle:{
-       margin:15,
-  },
-  item:{
-    padding:5,
-  },
-  itemEnglishName:{
-    fontSize:13,
-    fontWeight:'900'
-  },
-  Divider:{
-    backgroundColor:"purple",
-     width:400,
-  },
-})
+import {DrugCategoryModel} from '../../model/DrugCategoryModel';
+import {style} from "../../assets/style/items";
 
 export const DrugcategoryScreen=({navigation}:any)=>{
     const [data,setData]=useState<DrugCategoryModel[]>([]);
@@ -47,18 +31,18 @@ export const DrugcategoryScreen=({navigation}:any)=>{
           {data.length===0 && <Spinner color="indigo.500"/>}
           
           <FlatList data={data} keyExtractor={item => item.id + item.name}   renderItem={item=>(
-            <TouchableHighlight onPress={()=>navigation.navigate('DrugLis',item.item)}>
+            <TouchableHighlight onPress={()=>navigation.navigate('DrugList',item.item)}>
                <VStack>
                  
-                    <Box style={styles.item} marginTop={5}>
+                    <Box style={style.item} marginTop={5}>
                     <VStack>
-                      <Text style={styles.itemEnglishName} >  {item.item.name}</Text>
+                      <Text style={style.itemEnglishName} >  {item.item.name}</Text>
                     </VStack>
                     <VStack marginLeft={5}>
                         <Image source={require('../../assets/images/icons8-pills-48.png')}   alt="دارو" />
-                        <Text style={styles.textStyle}> {item.item.persianName}</Text>
+                        <Text style={style.textStyle}> {item.item.persianName}</Text>
                     </VStack>
-                    <Divider   style={styles.Divider} />
+                    <Divider   style={style.Divider} />
                </Box>
                </VStack>
             </TouchableHighlight>
