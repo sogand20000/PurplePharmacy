@@ -5,3 +5,6 @@
 Use Component nativebase
    https://docs.nativebase.io/
 
+   https://blog.logrocket.com/building-a-splash-screen-in-react-native/
+   https://appicon.co/#image-sets
+

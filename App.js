@@ -4,11 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen,AboutUsScreen,DrugcategoryScreen,DrugListScreen,DrugDetailScreen,AraghijatListScreen,AraghijatDetailScreen} from './screens';
 
 import {NativeBaseProvider} from 'native-base';
-
-const Stack = createNativeStackNavigator();
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-const Tab = createBottomTabNavigator();
-
+import SplashScreen from  "react-native-splash-screen";
 import {
   SafeAreaView,
   ScrollView,
@@ -19,6 +15,11 @@ import {
   View,
 } from 'react-native';
 import { color } from 'native-base/lib/typescript/theme/styled-system';
+const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+const Tab = createBottomTabNavigator();
+
+
 
 const MyTheme = {
   dark: false,
@@ -34,6 +35,12 @@ const MyTheme = {
 
 
  const App =()=>{
+
+   //Hide Splash screen on app load.
+   React.useEffect(() => {
+    SplashScreen.hide();
+  });
+  
   return(
     <NativeBaseProvider>
 
