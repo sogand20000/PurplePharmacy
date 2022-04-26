@@ -57,10 +57,9 @@ const unsubscribe = NetInfo.addEventListener(state => {
   toast.show({
    
     render:()=>{
-      return <Alert text="اشکال در شبکه" type="error"></Alert>
+      return <Alert text="اشکالcc در شبکه"  type="errdor"></Alert>
     }
   });
- // SplashScreen.show();
 }
 });
 

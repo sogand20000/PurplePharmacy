@@ -5,6 +5,7 @@ import {Button, Text, TouchableHighlight, View,StyleSheet} from 'react-native';
 import api from '../../api';
 import {DrugCategoryModel} from '../../model/DrugCategoryModel';
 import {style} from "../../assets/style/items";
+import {Alert} from "../../components/alert"
 
 export const DrugcategoryScreen=({navigation}:any)=>{
     const [data,setData]=useState<DrugCategoryModel[]>([]);
@@ -19,7 +20,9 @@ export const DrugcategoryScreen=({navigation}:any)=>{
          
         } catch (e) {
           toast.show({
-            description: 'اشکال در شبکه',
+             render:()=>{
+          return <Alert text="اشکال در شبکه" type="error"></Alert>
+        }
           });
         }
       })();
