@@ -3,7 +3,7 @@ import {NavigationContainer,Theme } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen,AboutUsScreen,DrugcategoryScreen,DrugListScreen,DrugDetailScreen,AraghijatListScreen,AraghijatDetailScreen} from './screens';
 
-import {NativeBaseProvider} from 'native-base';
+import {NativeBaseProvider, useToast} from 'native-base';
 import SplashScreen from  "react-native-splash-screen";
 import {
   SafeAreaView,
@@ -17,6 +17,10 @@ import {
 import { color } from 'native-base/lib/typescript/theme/styled-system';
 const Stack = createNativeStackNavigator();
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import NetInfo from "@react-native-community/netinfo";
+import {Alert} from "./components/alert";
+
 const Tab = createBottomTabNavigator();
 
 
@@ -36,9 +40,31 @@ const MyTheme = {
 
  const App =()=>{
 
-   //Hide Splash screen on app load.
+const toast= useToast();
+  
    React.useEffect(() => {
     SplashScreen.hide();
+
+const unsubscribe = NetInfo.addEventListener(state => {
+  console.log("Connection type", state.type);
+  if(!state.isConnected){
+
+
+    console.log("Is connected?", state.isConnected);
+
+  
+
+  toast.show({
+   
+    render:()=>{
+      return <Alert text="اشکال در شبکه" type="error"></Alert>
+    }
+  });
+ // SplashScreen.show();
+}
+});
+
+
   });
   
   return(

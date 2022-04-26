@@ -7,4 +7,5 @@ Use Component nativebase
 
    https://blog.logrocket.com/building-a-splash-screen-in-react-native/
    https://appicon.co/#image-sets
+   yarn add @react-native-community/netinfo
 

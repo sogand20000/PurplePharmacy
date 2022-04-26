@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-
 import { TouchableHighlight, View,Text, ScrollView } from "react-native"
 import { Box, FlatList, VStack,Image, Spinner,Divider, useToast, Heading, Center } from 'native-base';
 import api from "../../api"
 import { AraghijatModel } from "../../model/AraghijatModel";
 import {style} from "../../assets/style/items";
+import {Alert} from "../../components/alert"
 export const AraghijatListScreen=({navigation}: any) => {
 
-    const [data,setData]=useState<AraghijatModel[]>([]);
-
-const toast = useToast();
+ const [data,setData]=useState<AraghijatModel[]>([]);
+ const toast = useToast();
 useEffect(() => {
   //IIFE
   (async () => {
@@ -17,10 +16,11 @@ useEffect(() => {
 
      let response = await api.get<AraghijatModel[]>(`Araghijat`,);
     setData(response.data);
-     console.log(response.data)
     } catch (e) {
       toast.show({
-        description: 'اشکال در شبکه',
+        render:()=>{
+          return <Alert text="اشکال در شبکه"type="message"></Alert>
+        }
       });
     }
   })();
