@@ -35,6 +35,8 @@ export const DrugcategoryScreen = ({navigation}: any) => {
   useEffect(() => {
     let realm;
     (async () => {
+      //important thing use to schema for realm
+      // Realm.clearTestState() very useful
       Realm.clearTestState();
       realm = await Realm.open({
         path: 'myrealm',
