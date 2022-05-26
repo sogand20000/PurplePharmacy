@@ -1,6 +1,5 @@
-
 export interface DrugCategoryModel {
-    id:number;
-    name: string;
-    persianName:string
-  }
+  _id: number;
+  name: string;
+  persianName: string;
+}
