@@ -41,7 +41,78 @@ class AraghijatSchema {
   }
 }
 
+class DrugSchema {
+  public static schema: Realm.ObjectSchema = {
+    name: 'Drug',
+    primaryKey: '_id',
+    properties: {
+      _id: 'int',
+      categoryId: 'int',
+      name: 'string?',
+      usage: 'string?',
+      mechanism: 'string?',
+      pharmaco: 'string?',
+      noUsage: 'string?',
+      warning: 'string?',
+      avarez: 'string?',
+      tadakhol: 'string?',
+      notes: 'string?',
+      meghdarMasraf: 'string?',
+      ashkal: 'string?',
+      isFavorit: 'bool?',
+    },
+  };
+  public _id: number;
+  public categoryId: number;
+  public name: string;
+  public usage: string;
+  public mechanism: string;
+  public pharmaco: string;
+  public noUsage: string;
+  public warning: string;
+  public avarez: string;
+  public tadakhol: string;
+  public notes: string;
+  public meghdarMasraf: string;
+  public ashkal: string;
+  public isFavorit: string;
+
+  constructor(
+    _id: number,
+    categoryId: number,
+    name: string,
+    usage: string,
+    mechanism: string,
+    pharmaco: string,
+    noUsage: string,
+    warning: string,
+    avarez: string,
+    tadakhol: string,
+    notes: string,
+    meghdarMasraf: string,
+    ashkal: string,
+    isFavorit: string,
+  ) {
+    this._id = _id;
+    this.categoryId = categoryId;
+    this.name = name;
+    this.usage = usage;
+    this.mechanism = mechanism;
+    this.pharmaco = pharmaco;
+    this.noUsage = noUsage;
+    this.warning = warning;
+    this.avarez = avarez;
+    this.tadakhol = tadakhol;
+    this.notes = notes;
+    this.meghdarMasraf = meghdarMasraf;
+    this.ashkal = ashkal;
+    this.isFavorit = isFavorit;
+  }
+}
+
 const RealmInstance = new Realm({
-  schema: [DrugCategorySchema, AraghijatSchema],
+  schema: [DrugCategorySchema, AraghijatSchema, DrugSchema],
+  schemaVersion: 2, ///when chanhe in migrate update or delete or chnge type must set schemaVersion
+  //To migrate the realm to conform to the updated all schema, the developer sets the realm's schema version to 2....
 });
 export default RealmInstance;

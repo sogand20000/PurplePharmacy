@@ -1,16 +1,16 @@
-export interface DrugModel{
-    id:number,
-    categoryId: number,
-    name: string,
-    usage: string,
-    mechanism: string,
-    pharmaco: string,
-    noUsage: string,
-    warning: string,
-    avarez: string,
-    tadakhol: string,
-    notes: string,
-    meghdarMasraf: string,
-    ashkal: string,
-    isFavorit:boolean 
-  }
+export interface DrugModel {
+  _id: number;
+  categoryId: number;
+  name: string;
+  usage: string;
+  mechanism: string;
+  pharmaco: string;
+  noUsage: string;
+  warning: string;
+  avarez: string;
+  tadakhol: string;
+  notes: string;
+  meghdarMasraf: string;
+  ashkal: string;
+  isFavorit: boolean;
+}
