@@ -35,7 +35,7 @@ class AraghijatSchema {
   public tabiat: string;
   public content: string;
   constructor(_id: number, tabiat: string, content: string) {
-    this.id = _id;
+    this._id = _id;
     this.tabiat = tabiat;
     this.content = content;
   }

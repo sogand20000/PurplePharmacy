@@ -19,6 +19,8 @@ import api from '../../api';
 import {DrugCategoryModel} from '../../model/DrugCategoryModel';
 import {style} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
+import DrugcategoryData from '../../Data/Drugcategory.json';
+import realm from './../../Data/realm';
 import Realm from 'realm';
 const DrugcategoriesSchema = {
   name: 'Drugcategories',
@@ -30,9 +32,21 @@ const DrugcategoriesSchema = {
   primaryKey: '_id',
 };
 export const DrugcategoryScreen = ({navigation}: any) => {
-  const [data, setData] = useState<any>([]);
-
+  const [drugcategorys, setDrugcategorys] = useState<
+    Realm.Results<DrugCategoryModel>
+  >(realm.objects('DrugCategory'));
   useEffect(() => {
+    if (drugcategorys.length === 0) {
+      realm.write(() => {
+        DrugcategoryData.forEach(item => {
+          realm.create('DrugCategory', item);
+        });
+        setDrugcategorys(realm.objects('DrugCategory'));
+      });
+    }
+  }, []);
+
+  /*  useEffect(() => {
     let realm;
     (async () => {
       //important thing use to schema for realm
@@ -51,7 +65,7 @@ export const DrugcategoryScreen = ({navigation}: any) => {
         })
         .catch(console.error);
     })();
-  }, []);
+  }, []); */
 
   /* const toast = useToast();
   useEffect(() => {
@@ -73,7 +87,7 @@ export const DrugcategoryScreen = ({navigation}: any) => {
   return (
     <View>
       <FlatList
-        data={data}
+        data={drugcategorys}
         keyExtractor={item => item._id + item.name}
         renderItem={item => (
           <TouchableHighlight
