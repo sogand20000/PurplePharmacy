@@ -1,0 +1,227 @@
+[
+  {
+    "_id": 1,
+    "name": "Analgesics Anti- inflammatory and Antipyretics",
+    "persianName": "مسکن ،ضد التهاب وضد تب ها"
+  },
+  {
+    "_id": 2,
+    "name": "Anthelmintics",
+    "persianName": "ضد کرم"
+  },
+  {
+    "_id": 3,
+    "name": "Antibacterials",
+    "persianName": "ضد باکتری"
+  },
+  {
+    "_id": 4,
+    "name": "Ant_idepressants",
+    "persianName": "ضد افسردگی"
+  },
+  {
+    "_id": 5,
+    "name": "Ant_idiabetics",
+    "persianName": "ضد دیابت"
+  },
+  {
+    "_id": 6,
+    "name": "Antiepileptics",
+    "persianName": "ضد صرع"
+  },
+  {
+    "_id": 7,
+    "name": "Antifungals",
+    "persianName": "ضد قارچ"
+  },
+  {
+    "_id": 8,
+    "name": "Antigout",
+    "persianName": "ضد نقرس"
+  },
+  {
+    "_id": 9,
+    "name": "Antihistamines",
+    "persianName": "آنتی هیستامین ها"
+  },
+  {
+    "_id": 10,
+    "name": "Antimalarials",
+    "persianName": "ضد مالاریا"
+  },
+  {
+    "_id": 11,
+    "name": "Antimigraine",
+    "persianName": "ضد میگرن"
+  },
+  {
+    "_id": 12,
+    "name": "Antimuscarinics",
+    "persianName": "آنتی موسکارینیک ها"
+  },
+  {
+    "_id": 13,
+    "name": "Antineoplstics",
+    "persianName": "ضد سرطان ها"
+  },
+  {
+    "_id": 14,
+    "name": "Antiprotozoals",
+    "persianName": "ضد پروتوزوآها"
+  },
+  {
+    "_id": 15,
+    "name": "Antivirals",
+    "persianName": "ضد ویروسها"
+  },
+  {
+    "_id": 16,
+    "name": "Anxiolytic Sedatives Hypnotics and Antipsychotics",
+    "persianName": "خواب آورهای آرامبخش ،وضد جنون ها"
+  },
+  {
+    "_id": 17,
+    "name": "Blood Products Plasma Expanders and Haemostatics",
+    "persianName": "محصولات خون ،افزایش دهنده های پلاسما و خون ساز"
+  },
+  {
+    "_id": 18,
+    "name": "Bone Modulating",
+    "persianName": "استخوان ساز"
+  },
+  {
+    "_id": 19,
+    "name": "Bronchodilators and Anti- asthma",
+    "persianName": "گشاد کننده های برونش و داروهای ضد آسم"
+  },
+  {
+    "_id": 20,
+    "name": "Cardiovascular",
+    "persianName": "داروهای قلبی عروقی"
+  },
+  {
+    "_id": 21,
+    "name": "Chelators Ant_idots and Antagonists",
+    "persianName": "آنتی دوت ها،شلات کننده ها و آنتاگونیست ها"
+  },
+  {
+    "_id": 23,
+    "name": "Contrast Media",
+    "persianName": "مواد حاجب"
+  },
+  {
+    "_id": 24,
+    "name": "Corticostero_ids",
+    "persianName": "کورتیکواستروئیدها"
+  },
+  {
+    "_id": 25,
+    "name": "Cough Suppressants Expectorants Mucolytics and Nasal Decongestants",
+    "persianName": "مهار کننده سرفه،خلط آورها،نرم کننده های مخاط و ضد احتقان بینی"
+  },
+  {
+    "_id": 26,
+    "name": "Dermatological and Sunscreens",
+    "persianName": "پوستی و ضد آفتاب ها"
+  },
+  {
+    "_id": 27,
+    "name": "Disinfectants and Preservatives",
+    "persianName": "ضدعفونی کننده ها و مواد محافظ"
+  },
+  {
+    "_id": 28,
+    "name": "Dopaminergics",
+    "persianName": "دوپامینرژیک ها"
+  },
+  {
+    "_id": 29,
+    "name": "Electrolytes",
+    "persianName": "الکترولیت ها"
+  },
+  {
+    "_id": 31,
+    "name": "Gastrointestinal",
+    "persianName": "گوارشی"
+  },
+  {
+    "_id": 32,
+    "name": "General Anaesthetics",
+    "persianName": "بیهوش کننده های عمومی"
+  },
+  {
+    "_id": 33,
+    "name": "Hypothalamic and Pituitary Hormones",
+    "persianName": "هورمون های هیپوتالاموس و هیپوفیز"
+  },
+  {
+    "_id": 34,
+    "name": "Immunosuppressants",
+    "persianName": "مهار کننده های ایمنی"
+  },
+  {
+    "_id": 35,
+    "name": "Local Anaesthtics",
+    "persianName": "بیحس کننده های موضعی"
+  },
+  {
+    "_id": 36,
+    "name": "Muscle Relaxants",
+    "persianName": "شل کننده عضلات"
+  },
+  {
+    "_id": 37,
+    "name": "Neuromuscular Blockers",
+    "persianName": "مسدود کننده عصب، عضله"
+  },
+  {
+    "_id": 39,
+    "name": "Nutritional Agents and Vitamins",
+    "persianName": "عوامل تغذیه ای و ویتامین ها"
+  },
+  {
+    "_id": 41,
+    "name": "Paraffins and Similar Bases",
+    "persianName": "پارافین ها و پایه های مشابه"
+  },
+  {
+    "_id": 42,
+    "name": "Parasympathomimetics",
+    "persianName": "پاراسمپاتومیمتیک ها"
+  },
+  {
+    "_id": 43,
+    "name": "Pestic_ides and Repellents",
+    "persianName": "سموم ضد حشرات و دفع کننده های حشرات"
+  },
+  {
+    "_id": 44,
+    "name": "Prostaglandins",
+    "persianName": "پروستاگلاندین ها"
+  },
+  {
+    "_id": 46,
+    "name": "Sex Hormones",
+    "persianName": "هورمون های جنسی"
+  },
+  {
+    "_id": 48,
+    "name": "Stabilising and Suspending Agents",
+    "persianName": "سوسپانسیون کننده ها و قوام دهنده های داروئی"
+  },
+  {
+    "_id": 49,
+    "name": "Stimulants and Anorectics",
+    "persianName": "محرک ها و اشتها آورها"
+  },
+  {
+    "_id": 50,
+    "name": "Thyro_id and Antithyro_id",
+    "persianName": "تیروئید و ضدتیروئید"
+  },
+  {
+    "_id": 51,
+    "name": "Vaccins Immunoglobulins and Antisera",
+    "persianName": "واکسن ها،ایمنوگلوبولین ها و ضد سرم ها"
+  }
+]
