@@ -15,7 +15,8 @@ import api from '../../api';
 import {AraghijatModel} from '../../model/AraghijatModel';
 import {style} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
-import Realm from 'realm';
+import AraghijatData from '../../Data/Araghijat.json';
+import realm from './../../Data/realm';
 const AraghijatSchema = {
   name: 'Araghijat1',
   properties: {
@@ -29,11 +30,24 @@ const AraghijatSchema = {
 
 export const AraghijatListScreen = ({navigation}: any) => {
   const [data, setData] = useState<any>([]);
+  const [araghijats, setAraghijats] = useState<Realm.Results<AraghijatModel>>(
+    realm.objects('Araghijat'),
+  );
 
   useEffect(() => {
-    let realm;
-    (async () => {
-      Realm.clearTestState();
+    if (araghijats.length === 0) {
+      realm.write(() => {
+        AraghijatData.forEach(item => {
+          realm.create('Araghijat', item);
+        });
+        setAraghijats(realm.objects('Araghijat'));
+      });
+    }
+  }, []);
+
+  /*  (async () => {
+    let realm; 
+     Realm.clearTestState();
 
       realm = await Realm.open({
         path: 'myrealm',
@@ -49,7 +63,7 @@ export const AraghijatListScreen = ({navigation}: any) => {
         })
         .catch(console.error);
     })();
-  }, []);
+  }, []); */
 
   const toast = useToast();
   useEffect(() => {
@@ -71,7 +85,7 @@ export const AraghijatListScreen = ({navigation}: any) => {
   return (
     <View>
       <FlatList
-        data={data}
+        data={araghijats}
         keyExtractor={item => item._id + item.name}
         renderItem={item => (
           <TouchableHighlight

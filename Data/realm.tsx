@@ -2,7 +2,7 @@ import Realm from 'realm';
 
 class DrugCategorySchema {
   public static schema: Realm.ObjectSchema = {
-    name: 'DrugCategory1',
+    name: 'DrugCategory',
     primaryKey: '_id',
     properties: {
       _id: 'int',
@@ -10,11 +10,11 @@ class DrugCategorySchema {
       persianName: 'string',
     },
   };
-  public id: number;
+  public _id: number;
   public name: string;
   public persianName: string;
-  constructor(id: number, name: string, persianName: string) {
-    this.id = id;
+  constructor(_id: number, name: string, persianName: string) {
+    this._id = _id;
     this.name = name;
     this.persianName = persianName;
   }
@@ -22,7 +22,7 @@ class DrugCategorySchema {
 
 class AraghijatSchema {
   public static schema: Realm.ObjectSchema = {
-    name: 'Araghijat2',
+    name: 'Araghijat',
     primaryKey: '_id',
     properties: {
       _id: 'int',
@@ -31,7 +31,7 @@ class AraghijatSchema {
       content: 'string?',
     },
   };
-  public id: number;
+  public _id: number;
   public tabiat: string;
   public content: string;
   constructor(_id: number, tabiat: string, content: string) {

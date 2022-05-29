@@ -1,7 +1,6 @@
-export interface AraghijatModel{
-    Name:	string,
-    Tabiat:	string,
-    Content:	string,
-    
-    id	:number
-    }
+export interface AraghijatModel {
+  name: string;
+  tabiat: string;
+  content: string;
+  _id: number;
+}
