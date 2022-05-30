@@ -29,7 +29,47 @@ import NetInfo from '@react-native-community/netinfo';
 import {Alert} from './components/alert';
 
 const Tab = createBottomTabNavigator();
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
+const Drawer = createDrawerNavigator();
 
+function MyStack() {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="خانه" component={HomeScreen} />
+      <Stack.Screen
+        name="AboutUsScreen"
+        options={{title: 'درباره ما'}}
+        component={AboutUsScreen}
+      />
+      <Stack.Screen
+        name="DrugcategoryScreen"
+        options={{title: 'گروه بندی داروها'}}
+        component={DrugcategoryScreen}
+      />
+      <Stack.Screen
+        name="DrugList"
+        options={{title: 'داروها'}}
+        component={DrugListScreen}
+      />
+      <Stack.Screen
+        name="DrugDetail"
+        options={{title: 'جزییات'}}
+        component={DrugDetailScreen}
+      />
+      <Stack.Screen
+        name="AraghijatList"
+        options={{title: 'عرقیجات'}}
+        component={AraghijatListScreen}
+      />
+      <Stack.Screen
+        name="AraghijatDetail"
+        options={{title: 'عرقیجات'}}
+        component={AraghijatDetailScreen}
+      />
+    </Stack.Navigator>
+  );
+}
 const MyTheme = {
   dark: false,
   colors: {
@@ -65,39 +105,12 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="خانه" component={HomeScreen} />
-          <Stack.Screen
-            name="AboutUsScreen"
-            options={{title: 'درباره ما'}}
-            component={AboutUsScreen}
-          />
-          <Stack.Screen
-            name="DrugcategoryScreen"
-            options={{title: 'گروه بندی داروها'}}
-            component={DrugcategoryScreen}
-          />
-          <Stack.Screen
-            name="DrugList"
-            options={{title: 'داروها'}}
-            component={DrugListScreen}
-          />
-          <Stack.Screen
-            name="DrugDetail"
-            options={{title: 'جزییات'}}
-            component={DrugDetailScreen}
-          />
-          <Stack.Screen
-            name="AraghijatList"
-            options={{title: 'عرقیجات'}}
-            component={AraghijatListScreen}
-          />
-          <Stack.Screen
-            name="AraghijatDetail"
-            options={{title: 'عرقیجات'}}
-            component={AraghijatDetailScreen}
-          />
-        </Stack.Navigator>
+        <Drawer.Navigator>
+          <Drawer.Screen name="stack" component={MyStack} />
+
+          <Drawer.Screen name="Feed" component={HomeScreen} />
+          <Drawer.Screen name="Article" component={AraghijatListScreen} />
+        </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
