@@ -1,4 +1,4 @@
-import Realm from 'realm';
+/* import Realm from 'realm';
 
 class DrugCategorySchema {
   public static schema: Realm.ObjectSchema = {
@@ -34,10 +34,12 @@ class AraghijatSchema {
   public _id: number;
   public tabiat: string;
   public content: string;
-  constructor(_id: number, tabiat: string, content: string) {
+  public name: string;
+  constructor(_id: number, name: string, tabiat: string, content: string) {
     this._id = _id;
     this.tabiat = tabiat;
     this.content = content;
+    this.name = name;
   }
 }
 
@@ -112,7 +114,8 @@ class DrugSchema {
 
 const RealmInstance = new Realm({
   schema: [DrugCategorySchema, AraghijatSchema, DrugSchema],
-  schemaVersion: 2, ///when chanhe in migrate update or delete or chnge type must set schemaVersion
+  schemaVersion: 6, ///when chanhe in migrate update or delete or chnge type must set schemaVersion
   //To migrate the realm to conform to the updated all schema, the developer sets the realm's schema version to 2....
 });
 export default RealmInstance;
+ */

@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import {DrugModel} from '../../model/DrugModel';
 import DrugData from '../../Data/drug.json';
-import realm from './../../Data/realm';
-
+/* import realm from './../../Data/realm';
+ */
 const styles = StyleSheet.create({
   englishName: {
     fontSize: 13,
@@ -25,11 +25,9 @@ const styles = StyleSheet.create({
 
 export const DrugListScreen = ({navigation, route}: any) => {
   const [loading, setLoading] = useState(false);
-  const [drugs, setDrus] = useState<Realm.Results<DrugModel>>(
-    realm.objects('Drug'),
-  );
+  const [drugs, setDrus] = useState<DrugModel>();
   useEffect(() => {
-    realm.write(() => {
+   /*  realm.write(() => {
       if (drugs.length === 0) {
         DrugData.forEach(item => {
           realm.create('Drug', item);
@@ -42,7 +40,7 @@ export const DrugListScreen = ({navigation, route}: any) => {
 
       setDrus(items);
       setLoading(false);
-    });
+    }); */
   }, []);
 
   useEffect(() => {
@@ -54,15 +52,15 @@ export const DrugListScreen = ({navigation, route}: any) => {
   return (
     <View>
       {loading && <Spinner />}
-      <FlatList
+      {/* <FlatList
         data={drugs}
-        /* onEndReached={nextPage} */
+         onEndReached={nextPage} 
         keyExtractor={item => ' ' + item._id}
-        /*  refreshControl={
+          refreshControl={
           <RefreshControl
             refreshing={false}
             onRefresh={refresh}></RefreshControl>
-        } */
+        } 
         renderItem={item => (
           <TouchableHighlight
             onPress={() => navigation.navigate('DrugDetail', item.item)}>
@@ -77,7 +75,7 @@ export const DrugListScreen = ({navigation, route}: any) => {
               <Divider style={styles.Divider} />
             </VStack>
           </TouchableHighlight>
-        )}></FlatList>
+        )}></FlatList> */}
       <Button title="برگشت" onPress={() => navigation.pop()}></Button>
     </View>
   );

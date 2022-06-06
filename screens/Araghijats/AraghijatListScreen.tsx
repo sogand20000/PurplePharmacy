@@ -8,82 +8,35 @@ import {
   Spinner,
   Divider,
   useToast,
-  Heading,
-  Center,
 } from 'native-base';
-import api from '../../api';
 import {AraghijatModel} from '../../model/AraghijatModel';
 import {style} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
-import AraghijatData from '../../Data/Araghijat.json';
-import realm from './../../Data/realm';
-const AraghijatSchema = {
-  name: 'Araghijat1',
-  properties: {
-    _id: 'int',
-    name: 'string',
-    tabiat: 'string?',
-    content: 'string?',
-  },
-  primaryKey: '_id',
-};
 
 export const AraghijatListScreen = ({navigation}: any) => {
-  const [data, setData] = useState<any>([]);
-  const [araghijats, setAraghijats] = useState<Realm.Results<AraghijatModel>>(
-    realm.objects('Araghijat'),
-  );
-
+  const [araghijats, setAraghijats] = useState<AraghijatModel[]>();
+  const toast = useToast();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    if (araghijats.length === 0) {
-      realm.write(() => {
-        AraghijatData.forEach(item => {
-          realm.create('Araghijat', item);
+    try {
+      fetch('/api/araghijat')
+        .then(res => res.json())
+        .then(json => {
+          setAraghijats(json.araghijat);
+          setLoading(false);
         });
-        setAraghijats(realm.objects('Araghijat'));
+    } catch (error) {
+      toast.show({
+        render: () => {
+          return <Alert text="اشکال در شبکه" type="error"></Alert>;
+        },
       });
     }
   }, []);
 
-  /*  (async () => {
-    let realm; 
-     Realm.clearTestState();
-
-      realm = await Realm.open({
-        path: 'myrealm',
-        schema: [AraghijatSchema],
-      })
-        .then(realm => {
-          const Araghijats = realm.objects('Araghijat1');
-          console.log(realm.isClosed);
-
-          realm.write(() => {
-            setData(Araghijats);
-          });
-        })
-        .catch(console.error);
-    })();
-  }, []); */
-
-  const toast = useToast();
-  useEffect(() => {
-    //IIFE
-    (async () => {
-      try {
-        /*  let response = await api.get<AraghijatModel[]>(`Araghijat`);
-        setData(response.data); */
-      } catch (e) {
-        toast.show({
-          render: () => {
-            return <Alert text="اشکال در شبکه" type="message"></Alert>;
-          },
-        });
-      }
-    })();
-  }, []);
-
   return (
     <View>
+      {loading && <Spinner />}
       <FlatList
         data={araghijats}
         keyExtractor={item => item._id + item.name}
