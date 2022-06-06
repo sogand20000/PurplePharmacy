@@ -5,3 +5,4 @@ export {DrugListScreen} from './Drug/DrugListScreen';
 export {DrugDetailScreen} from './Drug/DrugDetailScreen';
 export {AraghijatListScreen} from './Araghijats/AraghijatListScreen';
 export {AraghijatDetailScreen} from './Araghijats/AraghijatDetailScreen';
+export {SearchScreen} from './Search/SearchScreen';
