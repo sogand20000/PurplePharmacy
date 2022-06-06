@@ -1,4 +1,13 @@
-import {Box, FlatList, VStack, Image, Spinner, Divider} from 'native-base';
+import {
+  Box,
+  FlatList,
+  VStack,
+  Image,
+  Spinner,
+  Divider,
+  Toast,
+  useToast,
+} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {
   Button,
@@ -9,9 +18,8 @@ import {
   RefreshControl,
 } from 'react-native';
 import {DrugModel} from '../../model/DrugModel';
-import DrugData from '../../Data/drug.json';
-/* import realm from './../../Data/realm';
- */
+import {Alert} from '../../components/alert';
+
 const styles = StyleSheet.create({
   englishName: {
     fontSize: 13,
@@ -24,45 +32,57 @@ const styles = StyleSheet.create({
 });
 
 export const DrugListScreen = ({navigation, route}: any) => {
-  const [loading, setLoading] = useState(false);
-  const [drugs, setDrus] = useState<DrugModel>();
+  const [loading, setLoading] = useState(true);
+  const [drugs, setDrus] = useState<DrugModel[]>();
+  const [page, setPage] = useState(1);
+  const toast = useToast();
+
   useEffect(() => {
-    /*  realm.write(() => {
-      if (drugs.length === 0) {
-        DrugData.forEach(item => {
-          realm.create('Drug', item);
-        });
-      }
-
-      let items = realm
-        .objects<DrugModel>('Drug')
-        .filtered('categoryId==$0', route.params._id); //route.params.id
-
-      setDrus(items);
-      setLoading(false);
-    }); */
+    try {
+      /* let response = await api.get<DrugModel[]>(
+    `drugs?categoryId=${route.params.id}&_limit=20&_page=${page}`,
+  ); */
+      (async () => {
+        await fetch(`/api/drug/${route.params._id}/`)
+          .then(res => res.json())
+          .then(json => {
+            setDrus(json.drug);
+            setLoading(false);
+          });
+      })();
+    } catch (error) {
+      toast.show({
+        render: () => {
+          return <Alert text="اشکال در شبکه" type="error"></Alert>;
+        },
+      });
+    }
   }, []);
-
-
 
   useEffect(() => {
     navigation.setOptions({
       title: ' دارو دسته ' + route.params.persianName,
     });
   }, []);
+  /*  const nextPage = () => {
+    setPage(page + 1);
+  };
+  const refresh = () => {
+    setPage(1);
+  }; */
 
   return (
     <View>
       {loading && <Spinner />}
-      {/* <FlatList
+      <FlatList
         data={drugs}
-         onEndReached={nextPage} 
+        /*   onEndReached={nextPage} */
         keyExtractor={item => ' ' + item._id}
-          refreshControl={
+        /*  refreshControl={
           <RefreshControl
             refreshing={false}
             onRefresh={refresh}></RefreshControl>
-        } 
+        } */
         renderItem={item => (
           <TouchableHighlight
             onPress={() => navigation.navigate('DrugDetail', item.item)}>
@@ -77,7 +97,7 @@ export const DrugListScreen = ({navigation, route}: any) => {
               <Divider style={styles.Divider} />
             </VStack>
           </TouchableHighlight>
-        )}></FlatList> */}
+        )}></FlatList>
       <Button title="برگشت" onPress={() => navigation.pop()}></Button>
     </View>
   );
