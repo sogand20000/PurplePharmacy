@@ -27,7 +27,7 @@ export const DrugListScreen = ({navigation, route}: any) => {
   const [loading, setLoading] = useState(false);
   const [drugs, setDrus] = useState<DrugModel>();
   useEffect(() => {
-   /*  realm.write(() => {
+    /*  realm.write(() => {
       if (drugs.length === 0) {
         DrugData.forEach(item => {
           realm.create('Drug', item);
@@ -42,6 +42,8 @@ export const DrugListScreen = ({navigation, route}: any) => {
       setLoading(false);
     }); */
   }, []);
+
+
 
   useEffect(() => {
     navigation.setOptions({

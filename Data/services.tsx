@@ -1,5 +1,7 @@
 import {createServer, Model} from 'miragejs';
 import AraghijatData from './../Data/Araghijat.json';
+import DrugcategoryData from './../Data/Drugcategory.json';
+
 createServer({
   models: {
     movie: Model,
@@ -11,6 +13,11 @@ createServer({
     this.get('/araghijat', () => {
       return {
         araghijat: AraghijatData,
+      };
+    });
+    this.get('/drugcategory', () => {
+      return {
+        drugcategory: DrugcategoryData,
       };
     });
   },

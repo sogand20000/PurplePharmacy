@@ -2,90 +2,43 @@ import {
   useToast,
   FlatList,
   Box,
-  HStack,
-  Avatar,
-  CheckIcon,
-  Icon,
   Image,
   VStack,
-  Skeleton,
   Spinner,
   Divider,
 } from 'native-base';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
 import React, {useEffect, useState} from 'react';
-import {Button, Text, TouchableHighlight, View, StyleSheet} from 'react-native';
-import api from '../../api';
-import {DrugCategoryModel} from '../../model/DrugCategoryModel';
+import {Button, Text, TouchableHighlight, View} from 'react-native';
 import {style} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
-import DrugcategoryData from '../../Data/Drugcategory.json';
-import realm from './../../Data/realm';
-import Realm from 'realm';
-const DrugcategoriesSchema = {
-  name: 'Drugcategories',
-  properties: {
-    _id: 'int',
-    name: 'string',
-    persianName: 'string',
-  },
-  primaryKey: '_id',
-};
+import {DrugCategoryModel} from '../../model/DrugCategoryModel';
+
 export const DrugcategoryScreen = ({navigation}: any) => {
-  const [drugcategorys, setDrugcategorys] = useState<
-    Realm.Results<DrugCategoryModel>
-  >(realm.objects('DrugCategory'));
+  const [drugcategorys, setDrugcategorys] = useState<DrugCategoryModel[]>();
+  const [loading, setLoading] = useState(true);
+  const toast = useToast();
   useEffect(() => {
-    if (drugcategorys.length === 0) {
-      realm.write(() => {
-        DrugcategoryData.forEach(item => {
-          realm.create('DrugCategory', item);
-        });
-        setDrugcategorys(realm.objects('DrugCategory'));
+    try {
+      (async () => {
+        await await fetch('/api/drugcategory')
+          .then(res => res.json())
+          .then(json => {
+            setDrugcategorys(json.drugcategory);
+            setLoading(false);
+          });
+      })();
+    } catch (error) {
+      toast.show({
+        render: () => {
+          return <Alert text="اشکال در شبکه" type="error"></Alert>;
+        },
       });
     }
   }, []);
 
-  /*  useEffect(() => {
-    let realm;
-    (async () => {
-      //important thing use to schema for realm
-      // Realm.clearTestState() very useful
-      Realm.clearTestState();
-      realm = await Realm.open({
-        path: 'myrealm',
-        schema: [DrugcategoriesSchema],
-      })
-        .then(realm => {
-          const drugcat = realm.objects('Drugcategories');
-
-          realm.write(() => {
-            setData(drugcat);
-          });
-        })
-        .catch(console.error);
-    })();
-  }, []); */
-
-  /* const toast = useToast();
-  useEffect(() => {
-    //IIFE
-    (async () => {
-      try {
-        let d = await (await api.get<DrugCategoryModel[]>('categories')).data;
-        setData(d);
-      } catch (e) {
-        toast.show({
-          render: () => {
-            return <Alert text="اشکال در شبکه" type="error"></Alert>;
-          },
-        });
-      }
-    })();
-  }, []); */
-
   return (
     <View>
+      {loading && <Spinner></Spinner>}
       <FlatList
         data={drugcategorys}
         keyExtractor={item => item._id + item.name}
