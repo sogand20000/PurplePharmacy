@@ -108,10 +108,7 @@ const App = () => {
       <NavigationContainer theme={MyTheme}>
         <Drawer.Navigator>
           <Drawer.Screen name="جستجو" component={SearchScreen} />
-
-          <Drawer.Screen name="stack" component={MyStack} />
-          <Drawer.Screen name="Feed" component={HomeScreen} />
-          <Drawer.Screen name="Article" component={AraghijatListScreen} />
+          <Drawer.Screen name="خانه" component={HomeScreen} />
         </Drawer.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
