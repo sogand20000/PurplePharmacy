@@ -9,8 +9,8 @@ import {
   Divider,
   useToast,
 } from 'native-base';
-import {AraghijatModel} from '../../model/AraghijatModel';
-import {style} from '../../assets/style/items';
+import {AraghijatModel} from './../../model/AraghijatModel'
+import {style} from './../../assets/style/items'
 import {Alert} from '../../components/alert';
 
 export const AraghijatListScreen = ({navigation}: any) => {

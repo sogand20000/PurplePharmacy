@@ -10,7 +10,7 @@ import {
   AraghijatListScreen,
   AraghijatDetailScreen,
   SearchScreen,
-} from './screens';
+} from './src/screens';
 import {NativeBaseProvider, useToast} from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
 import {
@@ -27,48 +27,19 @@ const Stack = createNativeStackNavigator();
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import NetInfo from '@react-native-community/netinfo';
-import {Alert} from './components/alert';
+import {Alert} from './src/components/alert';
 
 const Tab = createBottomTabNavigator();
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
 const Drawer = createDrawerNavigator();
 
-function MyStack() {
+function MyDrawer() {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="خانه" component={HomeScreen} />
-      <Stack.Screen
-        name="AboutUsScreen"
-        options={{title: 'درباره ما'}}
-        component={AboutUsScreen}
-      />
-      <Stack.Screen
-        name="DrugcategoryScreen"
-        options={{title: 'گروه بندی داروها'}}
-        component={DrugcategoryScreen}
-      />
-      <Stack.Screen
-        name="DrugList"
-        options={{title: 'داروها'}}
-        component={DrugListScreen}
-      />
-      <Stack.Screen
-        name="DrugDetail"
-        options={{title: 'جزییات'}}
-        component={DrugDetailScreen}
-      />
-      <Stack.Screen
-        name="AraghijatList"
-        options={{title: 'عرقیجات'}}
-        component={AraghijatListScreen}
-      />
-      <Stack.Screen
-        name="AraghijatDetail"
-        options={{title: 'عرقیجات'}}
-        component={AraghijatDetailScreen}
-      />
-    </Stack.Navigator>
+    <Drawer.Navigator>
+      <Drawer.Screen name="جستجو" component={SearchScreen} />
+      <Drawer.Screen name="home" component={HomeScreen} />
+    </Drawer.Navigator>
   );
 }
 const MyTheme = {
@@ -96,7 +67,7 @@ const App = () => {
 
         toast.show({
           render: () => {
-            return <Alert text="اشکالcc در شبکه" type="errdor"></Alert>;
+            return <Alert text="اشکال در شبکه" type="errdor"></Alert>;
           },
         });
       }
@@ -106,10 +77,40 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer theme={MyTheme}>
-        <Drawer.Navigator>
-          <Drawer.Screen name="جستجو" component={SearchScreen} />
-          <Drawer.Screen name="خانه" component={HomeScreen} />
-        </Drawer.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen name="پزشک بنش" component={MyDrawer} />
+          <Stack.Screen
+            name="HomeScreen"
+            options={{title: 'گروه بندی داروها'}}
+            component={HomeScreen}
+          />
+
+          <Stack.Screen
+            name="DrugcategoryScreen"
+            options={{title: 'گروه بندی داروها'}}
+            component={DrugcategoryScreen}
+          />
+          <Stack.Screen
+            name="DrugList"
+            options={{title: 'داروها'}}
+            component={DrugListScreen}
+          />
+          <Stack.Screen
+            name="DrugDetail"
+            options={{title: 'جزییات'}}
+            component={DrugDetailScreen}
+          />
+          <Stack.Screen
+            name="AraghijatList"
+            options={{title: 'عرقیجات'}}
+            component={AraghijatListScreen}
+          />
+          <Stack.Screen
+            name="AraghijatDetail"
+            options={{title: 'عرقیجات'}}
+            component={AraghijatDetailScreen}
+          />
+        </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
