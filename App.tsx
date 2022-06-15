@@ -10,6 +10,7 @@ import {
   AraghijatListScreen,
   AraghijatDetailScreen,
   SearchScreen,
+  LoginScreen,
 } from './src/screens';
 import {NativeBaseProvider, useToast} from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
@@ -38,7 +39,8 @@ function MyDrawer() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="جستجو" component={SearchScreen} />
-      <Drawer.Screen name="home" component={HomeScreen} />
+      <Drawer.Screen name="خانه" component={HomeScreen} />
+      <Drawer.Screen name="ثبت نام" component={LoginScreen} />
     </Drawer.Navigator>
   );
 }
@@ -47,6 +49,7 @@ const MyTheme = {
   colors: {
     // primary: 'rgb(255, 45, 85)',
     //, 85)',
+
     card: '#9254C8',
     text: 'rgb(28, 28, 30)',
     //border: 'rgb(199, 199, 204)',

@@ -12,19 +12,25 @@ import CustomButton from '../../components/CustomButton';
 /* import LoginPng from './../../assets/images/login.png';
  */ import InputField from '../../components/InputField';
 
-const LoginScreen = ({navigation}: any) => {
+export const LoginScreen = ({navigation}: any) => {
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <View style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center'}}>
-          <Image
+          <MaterialCommunityIcons
+            name="email-plus-outline"
+            size={20}
+            color="#666"
+            style={{marginRight: 5}}
+          />
+          {/* <Image
             source={require('./../../assets/images/login.png')}
             style={{
               height: 150,
               width: 300,
               transform: [{rotate: '-5deg'}],
             }}
-          />
+          />*/}
         </View>
         <Text
           style={{
@@ -92,4 +98,3 @@ const LoginScreen = ({navigation}: any) => {
     </SafeAreaView>
   );
 };
-export default LoginScreen;
