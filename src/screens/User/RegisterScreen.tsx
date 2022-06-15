@@ -8,20 +8,16 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../../components/CustomButton';
-
 import InputField from '../../components/InputFiled';
 
-export const LoginScreen = ({navigation}: any) => {
+export const RegisterScreen = ({navigation}: any) => {
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{paddingHorizontal: 25}}>
+    <SafeAreaView  style={{flex: 1, justifyContent: 'center'}}>
+      <View style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center', paddingBottom: 30}}>
           <Image
             source={require('./../../assets/images/login.png')}
@@ -32,45 +28,101 @@ export const LoginScreen = ({navigation}: any) => {
             }}
           />
         </View>
+        <Text
+          style={{
+            fontFamily: 'Roboto-Medium',
+            fontSize: 28,
+            fontWeight: '500',
+            color: '#333',
+            marginBottom: 30,
+          }}>
+          عضویت
+        </Text>
         <InputField
-          lable={'ایمیل'}
+          lable={'نام و نام خوانوادگی'}
           icon={
-            <MaterialIcons
-              name="alternate-email"
-              size={30}
+            <Ionicons
+              name="person"
+              size={20}
               color="#666"
               style={{marginRight: 5}}
             />
           }
-          keyboardType="email-address"
-          inputType={''}
           fieldButtonLabel={''}
           fieldButtonFunction={() => {}}
+          inputType="string"
+          keyboardType="default"
         />
-
+        <InputField
+          lable={'ایمیل'}
+          icon={
+            <MaterialCommunityIcons
+              name="email-plus-outline"
+              size={20}
+              color="#666"
+              style={{marginRight: 5}}
+            />
+          }
+          fieldButtonLabel={''}
+          fieldButtonFunction={() => {}}
+          inputType="string"
+          keyboardType="email-address"
+        />
         <InputField
           lable={'رمز ورود'}
           icon={
             <MaterialCommunityIcons
               name="key-variant"
-              size={30}
+              size={20}
               color="#666"
               style={{marginRight: 5}}
             />
           }
-          inputType={''}
-          fieldButtonLabel={'فراموش کرده اید؟'}
+          inputType="password"
+          keyboardType="default"
+          fieldButtonLabel={''}
           fieldButtonFunction={() => {}}
-          keyboardType={'email-address'}
+        />
+        <InputField
+          lable={'تکرار رمز ورود'}
+          icon={
+            <MaterialCommunityIcons
+              name="key-variant"
+              size={20}
+              color="#666"
+              style={{marginRight: 5}}
+            />
+          }
+          inputType="password"
+          keyboardType="default"
+          fieldButtonLabel={''}
+          fieldButtonFunction={() => {}}
         />
 
         <CustomButton
-          label={'ورود'}
+          label={'ثبت نام'}
           onPress={() => {
             alert('خوش امدید');
           }}
+          /*   onPress={() => {
+            JSHash('email', CONSTANTS.HashAlgorithms.sha256).then(
+              hash =>
+                ///
+
+                toast.show({
+                  render: () => {
+                    return (
+                      <Alert
+                        text={`hash Code = ${hash}`}
+                        type="login-password"></Alert>
+                    );
+                  },
+                }),
+              ///
+            );
+          }} */
         />
-      </ScrollView>
+      </View>
       <View style={styles.socialContener}>
         <TouchableOpacity style={styles.social}>
           <MaterialCommunityIcons
@@ -97,12 +149,12 @@ export const LoginScreen = ({navigation}: any) => {
           justifyContent: 'center',
           marginBottom: 30,
         }}>
-        <Text>ثبت نام نکرده اید؟</Text>
+        <Text>ثبت نام کرده ام ؟</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Register');
+            navigation.navigate('Login');
           }}>
-          <Text style={{color: '#AD40AF', fontWeight: '700'}}>ثبت نام</Text>
+          <Text style={{color: '#AD40AF', fontWeight: '700'}}>ورود</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

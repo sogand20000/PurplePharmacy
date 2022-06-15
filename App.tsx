@@ -11,6 +11,7 @@ import {
   AraghijatDetailScreen,
   SearchScreen,
   LoginScreen,
+  RegisterScreen,
 } from './src/screens';
 import {NativeBaseProvider, useToast} from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
@@ -40,7 +41,8 @@ function MyDrawer() {
     <Drawer.Navigator>
       <Drawer.Screen name="جستجو" component={SearchScreen} />
       <Drawer.Screen name="خانه" component={HomeScreen} />
-      <Drawer.Screen name="ثبت نام" component={LoginScreen} />
+      <Drawer.Screen name="ورود" component={LoginScreen} />
+      <Drawer.Screen name="ثبت نام" component={RegisterScreen} />
     </Drawer.Navigator>
   );
 }
@@ -81,7 +83,7 @@ const App = () => {
     <NativeBaseProvider>
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
-          <Stack.Screen name="پزشک بنش" component={MyDrawer} />
+          <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
           <Stack.Screen
             name="HomeScreen"
             options={{title: 'گروه بندی داروها'}}
@@ -112,6 +114,16 @@ const App = () => {
             name="AraghijatDetail"
             options={{title: 'عرقیجات'}}
             component={AraghijatDetailScreen}
+          />
+          <Stack.Screen
+            name="Login"
+            options={{title: 'ورود'}}
+            component={LoginScreen}
+          />
+          <Stack.Screen
+            name="Register"
+            options={{title: 'ثبت نام'}}
+            component={RegisterScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
