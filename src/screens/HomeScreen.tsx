@@ -55,14 +55,6 @@ export const HomeScreen = ({navigation}: any) => {
           img={require('../assets/images/icons8-teapot-48.png')}
           text={'دمنوش'}
           onPress={() => navigation.navigate('DrugcategoryScreen')}></MenuItem>
-        <MenuItem
-          img={require('../assets/images/icons8-teapot-48.png')}
-          text={'درباره ما'}
-          onPress={() => navigation.navigate('AboutUsScreen')}></MenuItem>
-        <MenuItem
-          img={require('../assets/images/icons8-teapot-48.png')}
-          text={'جستجو'}
-          onPress={() => navigation.navigate('SearchScreen')}></MenuItem>
       </View>
     </ScrollView>
   );

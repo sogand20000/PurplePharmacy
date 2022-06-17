@@ -39,10 +39,11 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="جستجو" component={SearchScreen} />
       <Drawer.Screen name="خانه" component={HomeScreen} />
       <Drawer.Screen name="ورود" component={LoginScreen} />
       <Drawer.Screen name="ثبت نام" component={RegisterScreen} />
+      <Drawer.Screen name="درباره ما" component={AboutUsScreen} />
+      <Drawer.Screen name="جستجو" component={SearchScreen} />
     </Drawer.Navigator>
   );
 }
@@ -82,7 +83,7 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
           <Stack.Screen
             name="HomeScreen"
@@ -124,6 +125,11 @@ const App = () => {
             name="Register"
             options={{title: 'ثبت نام'}}
             component={RegisterScreen}
+          />
+          <Stack.Screen
+            name="AboutUs"
+            options={{title: 'درباره ما'}}
+            component={AboutUsScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

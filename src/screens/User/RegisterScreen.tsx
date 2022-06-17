@@ -8,6 +8,7 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -16,8 +17,10 @@ import InputField from '../../components/InputFiled';
 
 export const RegisterScreen = ({navigation}: any) => {
   return (
-    <SafeAreaView  style={{flex: 1, justifyContent: 'center'}}>
-      <View style={{paddingHorizontal: 25}}>
+    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center', paddingBottom: 30}}>
           <Image
             source={require('./../../assets/images/login.png')}
@@ -28,6 +31,7 @@ export const RegisterScreen = ({navigation}: any) => {
             }}
           />
         </View>
+
         <Text
           style={{
             fontFamily: 'Roboto-Medium',
@@ -38,6 +42,33 @@ export const RegisterScreen = ({navigation}: any) => {
           }}>
           عضویت
         </Text>
+        <View style={styles.socialContener}>
+          <TouchableOpacity style={styles.social}>
+            <Image
+              source={require('./../../assets/images/logo-facebookpng-32202.png')}
+              style={{
+                height: 60,
+                width: 60,
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.social}>
+            <Image
+              source={require('./../../assets/images/google-logo-history-png-2598.png')}
+              style={{
+                height: 60,
+                width: 60,
+              }}></Image>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.social}>
+            <Image
+              source={require('./../../assets/images/logo-twitter-png-5859.png')}
+              style={{
+                height: 60,
+                width: 60,
+              }}></Image>
+          </TouchableOpacity>
+        </View>
         <InputField
           lable={'نام و نام خوانوادگی'}
           icon={
@@ -104,62 +135,27 @@ export const RegisterScreen = ({navigation}: any) => {
           onPress={() => {
             alert('خوش امدید');
           }}
-          /*   onPress={() => {
-            JSHash('email', CONSTANTS.HashAlgorithms.sha256).then(
-              hash =>
-                ///
-
-                toast.show({
-                  render: () => {
-                    return (
-                      <Alert
-                        text={`hash Code = ${hash}`}
-                        type="login-password"></Alert>
-                    );
-                  },
-                }),
-              ///
-            );
-          }} */
         />
-      </View>
-      <View style={styles.socialContener}>
-        <TouchableOpacity style={styles.social}>
-          <MaterialCommunityIcons
-            name="facebook"
-            size={60}
-            color="#54BAB9"></MaterialCommunityIcons>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.social}>
-          <MaterialCommunityIcons
-            name="google"
-            size={60}
-            color="#54BAB9"></MaterialCommunityIcons>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.social}>
-          <MaterialCommunityIcons
-            name="twitter"
-            size={60}
-            color="#54BAB9"></MaterialCommunityIcons>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'center',
-          marginBottom: 30,
-        }}>
-        <Text>ثبت نام کرده ام ؟</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Login');
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginBottom: 30,
           }}>
-          <Text style={{color: '#AD40AF', fontWeight: '700'}}>ورود</Text>
-        </TouchableOpacity>
-      </View>
+          <Text>ثبت نام کرده ام ؟</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Login');
+            }}>
+            <Text style={{color: '#AD40AF', fontWeight: '700'}}>ورود</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   social: {
     borderColor: '#ddd',
@@ -168,7 +164,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 10,
   },
-
   socialContener: {
     flexDirection: 'row',
     justifyContent: 'space-between',
