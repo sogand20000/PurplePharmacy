@@ -8,3 +8,5 @@ export {AraghijatDetailScreen} from './Araghijats/AraghijatDetailScreen';
 export {SearchScreen} from './Search/SearchScreen';
 export {LoginScreen} from './User/LoginScreen';
 export {RegisterScreen} from './User/RegisterScreen';
+export {ProfileScreen} from './User/ProfileScreen';
+export {EditProfileScreen} from './User/EditProfileScreen';
