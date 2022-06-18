@@ -23,11 +23,11 @@ export const RegisterScreen = ({navigation}: any) => {
         style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center', paddingBottom: 30}}>
           <Image
-            source={require('./../../assets/images/login.png')}
+            source={require('./../../assets/images/Register.png')}
             style={{
-              height: 210,
-              width: 220,
-              transform: [{rotate: '-5deg'}],
+              marginTop: 20,
+              height: 320,
+              width: 500,
             }}
           />
         </View>

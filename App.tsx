@@ -34,6 +34,7 @@ import {Alert} from './src/components/alert';
 const Tab = createBottomTabNavigator();
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
+import {style} from './src/assets/style/items';
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
@@ -83,7 +84,10 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}>
           <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
           <Stack.Screen
             name="HomeScreen"
