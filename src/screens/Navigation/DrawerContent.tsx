@@ -1,7 +1,7 @@
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {Icon} from 'native-base';
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, BackHandler} from 'react-native';
 import {
   Drawer,
   Text,
@@ -121,7 +121,9 @@ export default function DrawerContent(props) {
               size={size}></MaterialCommunityIcons>
           )}
           label="sing out"
-          onPress={() => {}}></DrawerItem>
+          onPress={() => {
+            BackHandler.exitApp();
+          }}></DrawerItem>
       </Drawer.Section>
     </View>
   );
