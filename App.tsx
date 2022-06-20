@@ -59,6 +59,8 @@ const App = () => {
       ...PaperDefaultTheme.colors,
       background: '#ffffff',
       text: '#333333',
+      iconColor: '#af64b0',
+      buttonColor: '#AD40AF',
     },
   };
 
@@ -68,8 +70,11 @@ const App = () => {
     colors: {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
-      /*   background: '#333333',
-      text: '#ffffff', */
+      buttonColor: '#AD40AF',
+      iconColor: '#af64b0',
+      background: '#333333',
+      placeholderTextColor: '#e8e6e6',
+      text: '#ffffff',
     },
   };
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
@@ -106,10 +111,7 @@ const App = () => {
         // setIsLoading(false);
       },
       toggleTheme: () => {
-        console.log('isDarkTheme before', isDarkTheme);
-
         setIsDarkTheme(isDarkTheme => !isDarkTheme);
-        console.log('isDarkTheme after', isDarkTheme);
       },
     }),
     [],
@@ -140,9 +142,11 @@ const App = () => {
         <NativeBaseProvider>
           <NavigationContainer theme={theme}>
             <Stack.Navigator
-              screenOptions={{
-                headerShown: false,
-              }}>
+              screenOptions={
+                {
+                  // headerShown: false,
+                }
+              }>
               <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
               <Stack.Screen
                 name="HomeScreen"

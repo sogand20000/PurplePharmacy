@@ -5,21 +5,16 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
-  StyleSheet,
-  Platform,
 } from 'react-native';
-
 import {useTheme} from 'react-native-paper';
-
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Feather from 'react-native-vector-icons/Feather';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import ImagePicker from 'react-native-image-crop-picker';
 import {styles} from './../../assets/style/EditProfileScreenStyle';
-export const EditProfileScreen = () => {
+
+export const EditProfileScreen = props => {
   const [image, setImage] = useState({
     uri: require('./../../assets/images/Ghanavati_Profile.jpg'),
   });
@@ -43,40 +38,38 @@ export const EditProfileScreen = () => {
   };
 
   const choosePhotoFromLibrary = () => {
-    console.log('choosePhotoFromLibrary');
-
-    /*   ImagePicker.openPicker({
+    ImagePicker.openPicker({
       width: 300,
       height: 300,
       cropping: true,
       compressImageQuality: 0.7,
     }).then(image => {
       console.log(image);
-      setImage(image.path);
-      this.bs.current.snapTo(1);
-    }); */
+      // setImage(url);
+      bs.current.snapTo(1);
+    });
   };
 
   const renderInner = () => (
     <View style={styles.panel}>
       <View style={{alignItems: 'center'}}>
-        <Text style={styles.panelTitle}>Upload Photo</Text>
-        <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
+        <Text style={styles.panelTitle}>آپلود عکس</Text>
+        <Text style={styles.panelSubtitle}>انتخاب عکس پروفایل</Text>
       </View>
       <TouchableOpacity
-        style={styles.panelButton}
+        style={[styles.panelButton, {backgroundColor: colors.buttonColor}]}
         onPress={takePhotoFromCamera}>
-        <Text style={styles.panelButtonTitle}>Take Photo</Text>
+        <Text style={styles.panelButtonTitle}>دوربین</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.panelButton}
+        style={[styles.panelButton, {backgroundColor: colors.buttonColor}]}
         onPress={choosePhotoFromLibrary}>
-        <Text style={styles.panelButtonTitle}>Choose From Library</Text>
+        <Text style={styles.panelButtonTitle}>انتخاب از گالری</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.panelButton}
+        style={[styles.panelButton, {backgroundColor: colors.buttonColor}]}
         onPress={() => bs.current.snapTo(1)}>
-        <Text style={styles.panelButtonTitle}>Cancel</Text>
+        <Text style={styles.panelButtonTitle}>برگشت</Text>
       </TouchableOpacity>
     </View>
   );
@@ -125,7 +118,7 @@ export const EditProfileScreen = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Icon
+                  <MaterialCommunityIcons
                     name="camera"
                     size={35}
                     color="#fff"
@@ -142,16 +135,20 @@ export const EditProfileScreen = () => {
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
-            John Doe
+          <Text
+            style={[
+              {marginTop: 10, fontSize: 18, fontWeight: 'bold'},
+              {color: colors.text},
+            ]}>
+            سمیه قنواتی
           </Text>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <SimpleLineIcons name="user" color={colors.iconColor} size={20} />
           <TextInput
-            placeholder="First Name"
-            placeholderTextColor="#666666"
+            placeholder="نام"
+            placeholderTextColor={colors.placeholderTextColor}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -162,10 +159,10 @@ export const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <SimpleLineIcons name="user" color={colors.iconColor} size={20} />
           <TextInput
-            placeholder="Last Name"
-            placeholderTextColor="#666666"
+            placeholder="نام خانوادگی"
+            placeholderTextColor={colors.placeholderTextColor}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -176,10 +173,14 @@ export const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
-          <Feather name="phone" color={colors.text} size={20} />
+          <MaterialCommunityIcons
+            name="phone"
+            color={colors.iconColor}
+            size={20}
+          />
           <TextInput
-            placeholder="Phone"
-            placeholderTextColor="#666666"
+            placeholder="تلفن"
+            placeholderTextColor={colors.placeholderTextColor}
             keyboardType="number-pad"
             autoCorrect={false}
             style={[
@@ -191,10 +192,10 @@ export const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="envelope-o" color={colors.text} size={20} />
+          <SimpleLineIcons name="envelope" color={colors.iconColor} size={20} />
           <TextInput
-            placeholder="Email"
-            placeholderTextColor="#666666"
+            placeholder="ایمیل"
+            placeholderTextColor={colors.placeholderTextColor}
             keyboardType="email-address"
             autoCorrect={false}
             style={[
@@ -206,10 +207,10 @@ export const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="globe" color={colors.text} size={20} />
+          <SimpleLineIcons name="globe" color={colors.iconColor} size={20} />
           <TextInput
-            placeholder="Country"
-            placeholderTextColor="#666666"
+            placeholder="کشور"
+            placeholderTextColor={colors.placeholderTextColor}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -220,10 +221,14 @@ export const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
-          <Icon name="map-marker-outline" color={colors.text} size={20} />
+          <MaterialCommunityIcons
+            name="map-marker-outline"
+            color={colors.iconColor}
+            size={20}
+          />
           <TextInput
-            placeholder="City"
-            placeholderTextColor="#666666"
+            placeholder="شهر"
+            placeholderTextColor={colors.placeholderTextColor}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -233,8 +238,10 @@ export const EditProfileScreen = () => {
             ]}
           />
         </View>
-        <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>Submit</Text>
+        <TouchableOpacity
+          style={[styles.commandButton, {backgroundColor: colors.buttonColor}]}
+          onPress={() => {}}>
+          <Text style={styles.panelButtonTitle}>ذخیره</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>

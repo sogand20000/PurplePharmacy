@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     borderRadius: 75,
+    margin: 20,
+    borderColor: '#AD40AF',
+    borderWidth: 5,
   },
   userName: {
     fontSize: 18,
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   aboutUser: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '600',
     color: '#666',
     textAlign: 'center',
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   userBtn: {
-    borderColor: '#2e64e5',
+    borderColor: '#AD40AF',
     borderWidth: 2,
     borderRadius: 3,
     paddingVertical: 8,
