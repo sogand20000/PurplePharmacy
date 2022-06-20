@@ -20,7 +20,7 @@ export const DrugcategoryScreen = ({navigation}: any) => {
   useEffect(() => {
     try {
       (async () => {
-        await  fetch('/api/drugcategory')
+        await fetch('/api/drugcategory')
           .then(res => res.json())
           .then(json => {
             setDrugcategorys(json.drugcategory);

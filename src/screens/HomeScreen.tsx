@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, ScrollView, StyleSheet} from 'react-native';
 
 import {Text, View} from 'react-native';
-import {MenuItem} from '../components/MenuItem ';
+import {MenuItem} from '../components/MenuItem';
 
 const styles = StyleSheet.create({
   parent: {

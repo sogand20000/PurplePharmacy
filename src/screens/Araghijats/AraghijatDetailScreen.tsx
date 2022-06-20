@@ -1,7 +1,7 @@
 import {ScrollView, Text} from 'react-native';
 import React, {useEffect} from 'react';
 import {Box, Divider, Heading} from 'native-base';
-import {style} from '../../assets/style/detail';
+import {style} from '../../assets/style/detailStyle';
 
 export const AraghijatDetailScreen = ({navigation, route}: any) => {
   const aragh = route.params;

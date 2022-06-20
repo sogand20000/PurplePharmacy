@@ -15,6 +15,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CustomButton from '../../components/CustomButton';
 
 import InputField from '../../components/InputFiled';
+import {styles} from './../../assets/style/LoginScreenStyle';
 
 export const LoginScreen = ({navigation}: any) => {
   return (
@@ -108,18 +109,3 @@ export const LoginScreen = ({navigation}: any) => {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  social: {
-    borderColor: '#ddd',
-    borderWidth: 2,
-    borderRadius: 10,
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-  },
-
-  socialContener: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 30,
-  },
-});
