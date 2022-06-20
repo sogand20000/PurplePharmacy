@@ -3,21 +3,21 @@ import {
   Text,
   SafeAreaView,
   View,
-  Alert,
   Image,
-  ImageBackground,
-  StyleSheet,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CustomButton from '../../components/CustomButton';
-
 import InputField from '../../components/InputFiled';
-import {styles} from './../../assets/style/LoginScreenStyle';
+import {SocialStyle} from '../../assets/style/SocialStyle';
+import {styles} from './../../assets/style/EditProfileScreenStyle';
+import {useTheme} from 'react-native-paper';
 
 export const LoginScreen = ({navigation}: any) => {
+  const {colors} = useTheme();
+
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <ScrollView
@@ -30,6 +30,7 @@ export const LoginScreen = ({navigation}: any) => {
               height: 210,
               width: 220,
               transform: [{rotate: '-5deg'}],
+              margin: 40,
             }}
           />
         </View>
@@ -39,7 +40,7 @@ export const LoginScreen = ({navigation}: any) => {
             <MaterialIcons
               name="alternate-email"
               size={30}
-              color="#666"
+              color={colors.iconColor}
               style={{marginRight: 5}}
             />
           }
@@ -55,7 +56,7 @@ export const LoginScreen = ({navigation}: any) => {
             <MaterialCommunityIcons
               name="key-variant"
               size={30}
-              color="#666"
+              color={colors.iconColor}
               style={{marginRight: 5}}
             />
           }
@@ -72,24 +73,24 @@ export const LoginScreen = ({navigation}: any) => {
           }}
         />
       </ScrollView>
-      <View style={styles.socialContener}>
-        <TouchableOpacity style={styles.social}>
+      <View style={SocialStyle.socialContener}>
+        <TouchableOpacity style={SocialStyle.social}>
           <MaterialCommunityIcons
             name="facebook"
             size={60}
-            color="#54BAB9"></MaterialCommunityIcons>
+            color={colors.iconColor}></MaterialCommunityIcons>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.social}>
+        <TouchableOpacity style={SocialStyle.social}>
           <MaterialCommunityIcons
             name="google"
             size={60}
-            color="#54BAB9"></MaterialCommunityIcons>
+            color={colors.iconColor}></MaterialCommunityIcons>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.social}>
+        <TouchableOpacity style={SocialStyle.social}>
           <MaterialCommunityIcons
             name="twitter"
             size={60}
-            color="#54BAB9"></MaterialCommunityIcons>
+            color={colors.iconColor}></MaterialCommunityIcons>
         </TouchableOpacity>
       </View>
       <View
@@ -98,7 +99,7 @@ export const LoginScreen = ({navigation}: any) => {
           justifyContent: 'center',
           marginBottom: 30,
         }}>
-        <Text>ثبت نام نکرده اید؟</Text>
+        <Text style={{color: colors.text}}>ثبت نام نکرده اید؟</Text>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Register');

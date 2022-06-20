@@ -61,6 +61,7 @@ const App = () => {
       text: '#333333',
       iconColor: '#af64b0',
       buttonColor: '#AD40AF',
+      backgroundBox: '#CCCCFF',
     },
   };
 
@@ -75,6 +76,7 @@ const App = () => {
       background: '#333333',
       placeholderTextColor: '#e8e6e6',
       text: '#ffffff',
+      backgroundBox: '#454343',
     },
   };
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);

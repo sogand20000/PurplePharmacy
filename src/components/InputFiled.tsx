@@ -1,5 +1,7 @@
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import React from 'react';
+import {useTheme} from 'react-native-paper';
+import {styles} from './../assets/style/EditProfileScreenStyle';
 
 export default function InputFiled({
   lable,
@@ -10,6 +12,8 @@ export default function InputFiled({
   fieldButtonLabel,
   fieldButtonLabelFunction,
 }) {
+  const {colors} = useTheme();
+
   return (
     <View
       style={{
@@ -24,19 +28,31 @@ export default function InputFiled({
         <TextInput
           placeholder={lable}
           keyboardType={keyboardType}
-          style={{flex: 1, paddingVertical: 0}}
           secureTextEntry={true}
+          placeholderTextColor={colors.placeholderTextColor}
+          style={[
+            styles.textInput,
+            {
+              color: colors.text,
+            },
+          ]}
         />
       ) : (
         <TextInput
           placeholder={lable}
-          style={{flex: 1, paddingVertical: 0}}
+          placeholderTextColor={colors.placeholderTextColor}
+          style={[
+            styles.textInput,
+            {
+              color: colors.text,
+            },
+          ]}
           keyboardType={keyboardType}
         />
       )}
 
       <TouchableOpacity onPress={fieldButtonLabelFunction}>
-        <Text style={{color: '#AD40AF', fontWeight: '700'}}>
+        <Text style={[{color: '#AD40AF', fontWeight: '700'}]}>
           {fieldButtonLabel}
         </Text>
       </TouchableOpacity>

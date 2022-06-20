@@ -12,18 +12,22 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../../components/CustomButton';
 import InputField from '../../components/InputFiled';
+import {useTheme} from 'react-native-paper';
+import {SocialStyle} from '../../assets/style/SocialStyle';
 
 export const RegisterScreen = ({navigation}: any) => {
+  const {colors} = useTheme();
+
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{paddingHorizontal: 25}}>
-        <View style={{alignItems: 'center', paddingBottom: 30}}>
+        <View style={{alignItems: 'center'}}>
           <Image
             source={require('./../../assets/images/Register.png')}
             style={{
-              marginTop: 20,
+              marginTop: 30,
               height: 320,
               width: 500,
             }}
@@ -31,17 +35,21 @@ export const RegisterScreen = ({navigation}: any) => {
         </View>
 
         <Text
-          style={{
-            fontFamily: 'Roboto-Medium',
-            fontSize: 28,
-            fontWeight: '500',
-            color: '#333',
-            marginBottom: 30,
-          }}>
+          style={[
+            {
+              fontFamily: 'Roboto-Medium',
+              fontSize: 28,
+              fontWeight: '500',
+              color: '#333',
+              marginBottom: 30,
+            },
+            {color: colors.text},
+          ]}>
           عضویت
         </Text>
-        <View style={styles.socialContener}>
-          <TouchableOpacity style={styles.social}>
+        <View style={SocialStyle.socialContener}>
+          <TouchableOpacity
+            style={[SocialStyle.social, {borderColor: colors.buttonColor}]}>
             <Image
               source={require('./../../assets/images/logo-facebookpng-32202.png')}
               style={{
@@ -50,7 +58,8 @@ export const RegisterScreen = ({navigation}: any) => {
               }}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.social}>
+          <TouchableOpacity
+            style={[SocialStyle.social, {borderColor: colors.buttonColor}]}>
             <Image
               source={require('./../../assets/images/google-logo-history-png-2598.png')}
               style={{
@@ -58,7 +67,8 @@ export const RegisterScreen = ({navigation}: any) => {
                 width: 60,
               }}></Image>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.social}>
+          <TouchableOpacity
+            style={[SocialStyle.social, {borderColor: colors.buttonColor}]}>
             <Image
               source={require('./../../assets/images/logo-twitter-png-5859.png')}
               style={{
@@ -68,12 +78,27 @@ export const RegisterScreen = ({navigation}: any) => {
           </TouchableOpacity>
         </View>
         <InputField
-          lable={'نام و نام خوانوادگی'}
+          lable={'نام'}
           icon={
             <Ionicons
               name="person"
               size={20}
-              color="#666"
+              color={colors.iconColor}
+              style={{marginRight: 5}}
+            />
+          }
+          fieldButtonLabel={''}
+          fieldButtonFunction={() => {}}
+          inputType="string"
+          keyboardType="default"
+        />
+        <InputField
+          lable={'نام خانوادگی'}
+          icon={
+            <Ionicons
+              name="person"
+              size={20}
+              color={colors.iconColor}
               style={{marginRight: 5}}
             />
           }
@@ -88,7 +113,7 @@ export const RegisterScreen = ({navigation}: any) => {
             <MaterialCommunityIcons
               name="email-plus-outline"
               size={20}
-              color="#666"
+              color={colors.iconColor}
               style={{marginRight: 5}}
             />
           }
@@ -103,7 +128,7 @@ export const RegisterScreen = ({navigation}: any) => {
             <MaterialCommunityIcons
               name="key-variant"
               size={20}
-              color="#666"
+              color={colors.iconColor}
               style={{marginRight: 5}}
             />
           }
@@ -118,7 +143,7 @@ export const RegisterScreen = ({navigation}: any) => {
             <MaterialCommunityIcons
               name="key-variant"
               size={20}
-              color="#666"
+              color={colors.iconColor}
               style={{marginRight: 5}}
             />
           }
@@ -141,7 +166,7 @@ export const RegisterScreen = ({navigation}: any) => {
             justifyContent: 'center',
             marginBottom: 30,
           }}>
-          <Text>ثبت نام کرده ام ؟</Text>
+          <Text style={{color: colors.text}}>ثبت نام کرده ام ؟</Text>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('Login');
@@ -154,7 +179,7 @@ export const RegisterScreen = ({navigation}: any) => {
   );
 };
 
-const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   social: {
     borderColor: '#ddd',
     borderWidth: 2,
@@ -167,4 +192,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 30,
   },
-});
+}); */

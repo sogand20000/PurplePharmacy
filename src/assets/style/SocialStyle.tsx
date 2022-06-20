@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-const styles = StyleSheet.create({
+const SocialStyle = StyleSheet.create({
   social: {
     borderColor: '#ddd',
     borderWidth: 2,
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 30,
+    margin: 30,
   },
 });
-export {styles};
+export {SocialStyle};

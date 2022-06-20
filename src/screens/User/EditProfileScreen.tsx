@@ -148,7 +148,6 @@ export const EditProfileScreen = props => {
           <SimpleLineIcons name="user" color={colors.iconColor} size={20} />
           <TextInput
             placeholder="نام"
-            placeholderTextColor={colors.placeholderTextColor}
             autoCorrect={false}
             style={[
               styles.textInput,
