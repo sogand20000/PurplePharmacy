@@ -19,32 +19,29 @@ import {
 const Stack = createNativeStackNavigator();
 
 const StackNavigation = ({navigation}: any) => {
-  /*  function MyDrawer() {
-    return (
-      <NavigationContainer theme={MyTheme}>
-        <Drawer.Navigator
-          drawerContent={props => <DrawerContent {...props}></DrawerContent>}>
-          <Drawer.Screen name="خانه" component={HomeScreen} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    );
-  } */
   return (
     <View>
       <Stack.Navigator
         screenOptions={{
-          headerShown: false,
+          headerStyle: {
+            backgroundColor: 'yellow',
+          },
+          headerTintColor: 'black',
+          // headerShown: false,
         }}>
-        {/*         <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
-         */}
         <Stack.Screen
           name="HomeScreen"
-          options={{title: 'گروه بندی داروها'}}
+          options={{
+            title: 'گروه بندی داروها',
+          }}
           component={HomeScreen}
         />
         <Stack.Screen
           name="DrugcategoryScreen"
-          options={{title: 'گروه بندی داروها'}}
+          options={{
+            title: 'گروه بندی داروها',
+            headerStyle: {backgroundColor: 'red'},
+          }}
           component={DrugcategoryScreen}
         />
         <Stack.Screen

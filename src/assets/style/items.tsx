@@ -1,30 +1,27 @@
-import {Row} from 'native-base';
+import {InputLeftAddon, Row} from 'native-base';
 import {StyleSheet} from 'react-native';
-const style = StyleSheet.create({
-  textStyle: {
-    margin: 15,
+const styles = StyleSheet.create({
+  text: {
+    margin: 10,
+    fontSize: 20,
   },
   item: {
-    margin: 10,
-    flexflow: Row,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
 
-  itemEnglishName: {
-    fontFamily: 'IndieFlower-Regular',
-
-    fontSize: 13,
-    fontWeight: '900',
-  },
+  itemEnglishName: {margin: 10, fontSize: 20},
   parsianName: {
     marginTop: 10,
     marginLeft: 10,
     fontSize: 16,
-    fontWeight: '900',
+    //  fontWeight: '900',
   },
   Divider: {
-    backgroundColor: 'purple',
-    width: 400,
+    borderWidth: 2,
+    //borderColor: 'purple',
   },
 });
 
-export {style};
+export {styles};

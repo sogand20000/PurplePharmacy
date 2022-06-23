@@ -15,9 +15,14 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {styles} from './../../assets/style/EditProfileScreenStyle';
 
 export const EditProfileScreen = props => {
-  const [image, setImage] = useState({
+  /*  const [image, setImage] = useState({
     uri: require('./../../assets/images/Ghanavati_Profile.jpg'),
-  });
+  }); */
+  // const [image, setImage] = useState(
+  //   './../../assets/images/Ghanavati_Profile.jpg',
+  // );
+
+  const image = './../../assets/images/Ghanavati_Profile.jpg';
   const {colors} = useTheme();
   const bs = React.createRef();
   const fall = new Animated.Value(5);
@@ -28,11 +33,12 @@ export const EditProfileScreen = props => {
       cropping: true,
       compressImageQuality: 0.7,
     }).then(image => {
-      const url1 = './../../assets/images/Ghanavati_Profile.jpg';
+      /* const url1 = './../../assets/images/Ghanavati_Profile.jpg';
       const url = {
         uri: require(url1),
-      };
-      console.log(url.uri);
+      }; */
+      //setImage(image.path);
+      // console.log(url.uri);
       bs.current.snapTo(1);
     });
   };
@@ -109,7 +115,7 @@ export const EditProfileScreen = props => {
                 alignItems: 'center',
               }}>
               <ImageBackground
-                source={image.uri}
+                source={require(image)}
                 style={{height: 100, width: 100}}
                 imageStyle={{borderRadius: 15}}>
                 <View

@@ -12,7 +12,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CustomButton from '../../components/CustomButton';
 import InputField from '../../components/InputFiled';
 import {SocialStyle} from '../../assets/style/SocialStyle';
-import {styles} from './../../assets/style/EditProfileScreenStyle';
 import {useTheme} from 'react-native-paper';
 
 export const LoginScreen = ({navigation}: any) => {

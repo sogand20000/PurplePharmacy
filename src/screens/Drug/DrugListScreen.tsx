@@ -1,37 +1,24 @@
-import {
-  Box,
-  FlatList,
-  VStack,
-  Image,
-  Spinner,
-  Divider,
-  Toast,
-  useToast,
-} from 'native-base';
+import {Box, FlatList, VStack, Spinner, useToast, Divider} from 'native-base';
 import React, {useEffect, useState} from 'react';
-import {
-  Button,
-  Text,
-  TouchableHighlight,
-  View,
-  StyleSheet,
-  RefreshControl,
-} from 'react-native';
+import {Button, Text, TouchableHighlight, View, StyleSheet} from 'react-native';
 import {DrugModel} from '../../model/DrugModel';
 import {Alert} from '../../components/alert';
+import {useTheme} from 'react-native-paper';
 
 const styles = StyleSheet.create({
   englishName: {
-    fontSize: 13,
+    fontSize: 20,
     fontWeight: '900',
+    textAlign: 'center',
   },
   Divider: {
     backgroundColor: 'purple',
-    width: 400,
   },
 });
 
 export const DrugListScreen = ({navigation, route}: any) => {
+  const {colors} = useTheme();
+
   const [loading, setLoading] = useState(true);
   const [drugs, setDrus] = useState<DrugModel[]>();
   const [page, setPage] = useState(1);
@@ -87,18 +74,33 @@ export const DrugListScreen = ({navigation, route}: any) => {
           <TouchableHighlight
             onPress={() => navigation.navigate('DrugDetail', item.item)}>
             <VStack>
-              <Box marginTop={1}>
-                <Text style={styles.englishName}>{item.item.name}</Text>
-                <Image
-                  source={require('../../assets/images/icons8-pills-48.png')}
-                  alt="دارو"
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  height: 100,
+                }}>
+                <Box
+                  style={{
+                    flex: 1,
+                    padding: 34,
+                    flexDirection: 'row',
+
+                    justifyContent: 'space-evenly',
+                  }}>
+                  <Text style={[styles.englishName, {color: colors.text}]}>
+                    {item.item.name}
+                  </Text>
+                </Box>
+                <Divider
+                  style={[styles.Divider, {borderColor: colors.iconColor}]}
                 />
-              </Box>
-              <Divider style={styles.Divider} />
+              </View>
             </VStack>
           </TouchableHighlight>
         )}></FlatList>
-      <Button title="برگشت" onPress={() => navigation.pop()}></Button>
     </View>
   );
 };

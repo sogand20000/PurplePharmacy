@@ -24,7 +24,7 @@ export const ProfileScreen = ({navigation}: any) => {
             source={require('./../../assets/images/Ghanavati_Profile.jpg')}
             size={160}></Avatar.Image>
           <Text style={[styles.userName, {color: colors.text}]}>
-            Somayeh Ghanavati
+            سمیه قنواتی نسب
           </Text>
           <Text style={[styles.aboutUser, {color: colors.text}]}>
             Im somayeh Ghanavati

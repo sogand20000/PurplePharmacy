@@ -1,31 +1,33 @@
-
 import {StyleSheet} from 'react-native';
-const style=StyleSheet.create({
-
-  Heading:{
-    textAlign: "center",
-    marginBottom:5
-  },
-  
-  Text:{
-    textAlign: "center",
-    paddingTop:20,
-    fontSize:15,
-    marginBottom:20
-
+const style = StyleSheet.create({
+  Heading: {
+    textAlign: 'center',
+    marginBottom: 5,
   },
 
-  Divider:{
-    backgroundColor:"purple",
-     width:200,
+  Text: {
+    paddingTop: 20,
+    fontSize: 20,
+    marginBottom: 20,
+    textAlign: 'justify',
+    lineHeight: 50,
   },
 
-  Box:{
-    alignItems:"center",
-     backgroundColor:'white' ,
-     marginBottom:5,
-     marginTop:20,
+  Divider: {
+    backgroundColor: 'purple',
+    width: 200,
   },
-})
 
-   export{style}
+  Box: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'white',
+    marginBottom: 5,
+    marginTop: 20,
+    /*    borderWidth: 6,
+    borderColor: 'purple',
+    borderBottomWidth: 0, */
+  },
+});
+
+export {style};

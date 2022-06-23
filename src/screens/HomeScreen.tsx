@@ -7,11 +7,12 @@ import {MenuItem} from '../components/MenuItem';
 const styles = StyleSheet.create({
   row: {
     flex: 1,
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginLeft: 50,
     marginRight: 50,
-    marginTop: 40,
+    marginTop: 50,
   },
 });
 export const HomeScreen = ({navigation}: any) => {

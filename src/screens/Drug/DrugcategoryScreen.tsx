@@ -9,11 +9,14 @@ import {
 } from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {Button, Text, TouchableHighlight, View} from 'react-native';
-import {style} from '../../assets/style/items';
+import {styles} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
 import {DrugCategoryModel} from '../../model/DrugCategoryModel';
+import {useTheme} from 'react-native-paper';
 
 export const DrugcategoryScreen = ({navigation}: any) => {
+  const {colors} = useTheme();
+
   const [drugcategorys, setDrugcategorys] = useState<DrugCategoryModel[]>();
   const [loading, setLoading] = useState(true);
   const toast = useToast();
@@ -46,19 +49,31 @@ export const DrugcategoryScreen = ({navigation}: any) => {
           <TouchableHighlight
             onPress={() => navigation.navigate('DrugList', item.item)}>
             <VStack>
-              <Box style={style.item} marginTop={5}>
-                <VStack>
-                  <Text style={style.itemEnglishName}> {item.item.name}</Text>
-                </VStack>
-                <VStack marginLeft={5}>
+              <Box style={styles.item} marginTop={5}>
+                <VStack
+                  style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    paddingRight: 10,
+                  }}
+                  marginLeft={5}>
                   <Image
                     source={require('../../assets/images/icons8-pills-48.png')}
                     alt="دارو"
                   />
-                  <Text style={style.textStyle}> {item.item.persianName}</Text>
+                  <Text style={[styles.text, {color: colors.text}]}>
+                    {item.item.persianName}
+                  </Text>
                 </VStack>
-                <Divider style={style.Divider} />
+                <VStack>
+                  <Text style={[styles.itemEnglishName, {color: colors.text}]}>
+                    {item.item.name}
+                  </Text>
+                </VStack>
               </Box>
+              <Divider
+                style={[styles.Divider, {borderColor: colors.iconColor}]}
+              />
             </VStack>
           </TouchableHighlight>
         )}></FlatList>

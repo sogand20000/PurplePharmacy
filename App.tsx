@@ -40,6 +40,8 @@ import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
+import {useTheme} from 'react-native-paper';
+
 const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
@@ -51,6 +53,8 @@ function MyDrawer() {
 }
 
 const App = () => {
+  const {colors} = useTheme();
+
   const CustomDefaultTheme = {
     ...NavigationDefaultTheme,
     ...PaperDefaultTheme,
@@ -144,11 +148,16 @@ const App = () => {
         <NativeBaseProvider>
           <NavigationContainer theme={theme}>
             <Stack.Navigator
-              screenOptions={
-                {
-                  // headerShown: false,
-                }
-              }>
+              screenOptions={{
+                //headerShown: false,
+                headerStyle: {
+                  backgroundColor: theme.colors.backgroundBox,
+                },
+                headerTitleStyle: {
+                  color: theme.colors.text,
+                },
+                headerTintColor: 'black',
+              }}>
               <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
               <Stack.Screen
                 name="HomeScreen"
