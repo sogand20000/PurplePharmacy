@@ -11,8 +11,8 @@ import {useTheme} from 'react-native-paper';
 const styles = StyleSheet.create({
   itemContainer: {
     alignItems: 'center',
-    width: 110,
-    height: 110,
+    width: 100,
+    height: 100,
     justifyContent: 'center',
   },
   itemImage: {

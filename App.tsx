@@ -53,8 +53,6 @@ function MyDrawer() {
 }
 
 const App = () => {
-  const {colors} = useTheme();
-
   const CustomDefaultTheme = {
     ...NavigationDefaultTheme,
     ...PaperDefaultTheme,
