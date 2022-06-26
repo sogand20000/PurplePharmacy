@@ -1,7 +1,7 @@
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {Icon} from 'native-base';
 import React, {useState} from 'react';
-import {View, StyleSheet, BackHandler} from 'react-native';
+import {View, StyleSheet, BackHandler, Image} from 'react-native';
 import {
   Drawer,
   Text,
@@ -18,10 +18,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {AuthContext} from './../../components/context';
 import {styles} from '../../assets/style/DrawerContentStyle';
 import colors from 'native-base/lib/typescript/theme/base/colors';
+import Profile from '../../assets/images/user.png';
 
+const imageUri = Image.resolveAssetSource(Profile).uri;
 export default function DrawerContent(props) {
   const {signOut, toggleTheme} = React.useContext(AuthContext);
-
+  const [imageUrl, setImageUrl] = useState(imageUri);
   const {colors} = useTheme();
   const MyTheme = () => {
     const isDark = colors.dark;
@@ -34,11 +36,12 @@ export default function DrawerContent(props) {
           <View style={styles.userInfSection}>
             <View style={{flexDirection: 'row', marginTop: 18}}>
               <Avatar.Image
-                source={require('./../../assets/images/Ghanavati_Profile.jpg')}
+                source={{uri: imageUrl}}
+                style={{backgroundColor: colors.grey}}
                 size={70}></Avatar.Image>
               <View style={{marginLeft: 18, flexDirection: 'column'}}>
                 <Title style={[styles.title, {color: colors.text}]}>
-                  Somayeh Ghanavati
+                  نام ونام خانوادگی
                 </Title>
                 <Caption style={[styles.caption, {color: colors.text}]}>
                   کاربر

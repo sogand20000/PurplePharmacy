@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
+  Image,
 } from 'react-native';
 import {useTheme} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -13,34 +14,31 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import ImagePicker from 'react-native-image-crop-picker';
 import {styles} from './../../assets/style/EditProfileScreenStyle';
+import Profile from '../../assets/images/user.png';
+
+const imageUri = Image.resolveAssetSource(Profile).uri;
 
 export const EditProfileScreen = props => {
-  /*  const [image, setImage] = useState({
-    uri: require('./../../assets/images/Ghanavati_Profile.jpg'),
-  }); */
-  // const [image, setImage] = useState(
-  //   './../../assets/images/Ghanavati_Profile.jpg',
-  // );
+  const [image, setImage] = useState(imageUri);
 
-  const image = './../../assets/images/Ghanavati_Profile.jpg';
   const {colors} = useTheme();
   const bs = React.createRef();
   const fall = new Animated.Value(5);
+
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 300,
       cropping: true,
       compressImageQuality: 0.7,
-    }).then(image => {
-      /* const url1 = './../../assets/images/Ghanavati_Profile.jpg';
-      const url = {
-        uri: require(url1),
-      }; */
-      //setImage(image.path);
-      // console.log(url.uri);
-      bs.current.snapTo(1);
-    });
+    })
+      .then(image => {
+        setImage(image.path);
+        //  bs.current.snapTo(1);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   const choosePhotoFromLibrary = () => {
@@ -49,11 +47,14 @@ export const EditProfileScreen = props => {
       height: 300,
       cropping: true,
       compressImageQuality: 0.7,
-    }).then(image => {
-      console.log(image);
-      // setImage(url);
-      bs.current.snapTo(1);
-    });
+    })
+      .then(image => {
+        setImage(image.path);
+        // bs.current.snapTo(1);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   const renderInner = () => (
@@ -115,21 +116,23 @@ export const EditProfileScreen = props => {
                 alignItems: 'center',
               }}>
               <ImageBackground
-                source={require(image)}
+                source={{
+                  uri: image,
+                }}
                 style={{height: 100, width: 100}}
                 imageStyle={{borderRadius: 15}}>
                 <View
                   style={{
                     flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    // justifyContent: 'center',
+                    //alignItems: 'center',
                   }}>
                   <MaterialCommunityIcons
                     name="camera"
                     size={35}
-                    color="#fff"
+                    color={colors.iconColor}
                     style={{
-                      opacity: 0.7,
+                      opacity: 0.8,
                       alignItems: 'center',
                       justifyContent: 'center',
                       borderWidth: 1,
@@ -146,7 +149,7 @@ export const EditProfileScreen = props => {
               {marginTop: 10, fontSize: 18, fontWeight: 'bold'},
               {color: colors.text},
             ]}>
-            سمیه قنواتی
+            نام و نام خانوادگی
           </Text>
         </View>
 

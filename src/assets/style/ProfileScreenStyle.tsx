@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
   userImg: {
-    height: 150,
-    width: 150,
-    borderRadius: 75,
-    margin: 20,
-    borderColor: '#AD40AF',
-    borderWidth: 5,
+    // height: 150,
+    // width: 150,
+    //borderRadius: 75,
+    // margin: 20,
+    // borderColor: '#AD40AF',
+    // borderWidth: 5,
   },
   userName: {
     fontSize: 18,

@@ -1,34 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   SafeAreaView,
   View,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import {Avatar, Caption, Title, TouchableRipple} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {styles} from './../../assets/style/ProfileScreenStyle';
 import {useTheme} from 'react-native-paper';
+import Profile from '../../assets/images/user.png';
 
+const imageUri = Image.resolveAssetSource(Profile).uri;
 export const ProfileScreen = ({navigation}: any) => {
   const {colors} = useTheme();
+  const [imageUrl, setImageUrl] = useState(imageUri);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: colors.background}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{alignItems: 'center', paddingBottom: 30}}>
           <Avatar.Image
-            style={styles.userImg}
-            source={require('./../../assets/images/Ghanavati_Profile.jpg')}
-            size={160}></Avatar.Image>
+            source={{uri: imageUrl}}
+            size={90}
+            style={{backgroundColor: colors.grey}}></Avatar.Image>
           <Text style={[styles.userName, {color: colors.text}]}>
-            سمیه قنواتی نسب
+            نام و نام خانوادگی
           </Text>
-          <Text style={[styles.aboutUser, {color: colors.text}]}>
-            Im somayeh Ghanavati
-          </Text>
+          <Text style={[styles.aboutUser, {color: colors.text}]}>کاربر</Text>
           <View style={styles.userBtnWrapper}>
             <TouchableOpacity
               style={styles.userBtn}

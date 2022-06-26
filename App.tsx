@@ -59,6 +59,13 @@ const App = () => {
     colors: {
       ...NavigationDefaultTheme.colors,
       ...PaperDefaultTheme.colors,
+      white: '#fff',
+      black: '#000',
+      blue: '#5D5FEE',
+      grey: '#BABBC3',
+      light: '#F3F4FB',
+      darkBlue: '#7978B5',
+      red: 'red',
       background: '#ffffff',
       text: '#333333',
       iconColor: '#af64b0',
