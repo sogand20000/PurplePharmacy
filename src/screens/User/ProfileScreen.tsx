@@ -76,7 +76,7 @@ export const ProfileScreen = ({navigation}: any) => {
               s.ghanavati94@gmail.com
             </Text>
           </View>
-          <View style={styles.infoBoxWrapper}>
+          {/*    <View style={styles.infoBoxWrapper}>
             <View
               style={[
                 styles.infoBox,
@@ -89,8 +89,8 @@ export const ProfileScreen = ({navigation}: any) => {
               <Title>12</Title>
               <Caption>Orders</Caption>
             </View>
-          </View>
-          <View>
+          </View> */}
+          {/*   <View>
             <TouchableRipple onPress={() => {}}>
               <View style={styles.menuItem}>
                 <MaterialCommunityIcons
@@ -135,7 +135,7 @@ export const ProfileScreen = ({navigation}: any) => {
                 </Text>
               </View>
             </TouchableRipple>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </SafeAreaView>

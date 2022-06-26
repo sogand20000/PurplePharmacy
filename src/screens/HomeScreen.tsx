@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginLeft: 50,
-    marginRight: 50,
-    marginTop: 50,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 20,
   },
 });
 export const HomeScreen = ({navigation}: any) => {

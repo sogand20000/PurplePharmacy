@@ -1,7 +1,13 @@
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {Icon} from 'native-base';
 import React, {useState} from 'react';
-import {View, StyleSheet, BackHandler, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  BackHandler,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {
   Drawer,
   Text,
@@ -19,7 +25,10 @@ import {AuthContext} from './../../components/context';
 import {styles} from '../../assets/style/DrawerContentStyle';
 import colors from 'native-base/lib/typescript/theme/base/colors';
 import Profile from '../../assets/images/user.png';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const imageUri = Image.resolveAssetSource(Profile).uri;
 export default function DrawerContent(props) {
   const {signOut, toggleTheme} = React.useContext(AuthContext);
@@ -38,14 +47,18 @@ export default function DrawerContent(props) {
               <Avatar.Image
                 source={{uri: imageUrl}}
                 style={{backgroundColor: colors.grey}}
-                size={70}></Avatar.Image>
+                size={(wp('10%'), hp('10%'))}></Avatar.Image>
               <View style={{marginLeft: 18, flexDirection: 'column'}}>
                 <Title style={[styles.title, {color: colors.text}]}>
                   نام ونام خانوادگی
                 </Title>
-                <Caption style={[styles.caption, {color: colors.text}]}>
-                  کاربر
-                </Caption>
+
+                <TouchableOpacity
+                  onPress={() => {
+                    props.navigation.navigate('EditProfile');
+                  }}>
+                  <Text>ویرایش</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -55,38 +68,36 @@ export default function DrawerContent(props) {
                 <MaterialCommunityIcons
                   name="home"
                   color={colors.iconColor}
-                  size={30}></MaterialCommunityIcons>
+                  size={(wp('5%'), hp('3%'))}></MaterialCommunityIcons>
               )}
               label={() => (
-                <Text style={[{fontSize: 18}, {color: colors.text}]}>خانه</Text>
+                <Text
+                  style={[
+                    {fontSize: (wp('2%'), hp('2%'))},
+                    {color: colors.text},
+                  ]}>
+                  خانه
+                </Text>
               )}
               onPress={() => {
                 props.navigation.navigate('HomeScreen');
               }}></DrawerItem>
-            <DrawerItem
-              icon={({color, size}) => (
-                <MaterialCommunityIcons
-                  name="account-outline"
-                  color={colors.iconColor}
-                  size={30}></MaterialCommunityIcons>
-              )}
-              label={() => (
-                <Text style={[{fontSize: 18}, {color: colors.text}]}>
-                  پروفایل
-                </Text>
-              )}
-              onPress={() => {
-                props.navigation.navigate('Profile');
-              }}></DrawerItem>
+
             <DrawerItem
               icon={({color, size}) => (
                 <MaterialIcons
                   name="input"
                   color={colors.iconColor}
-                  size={30}></MaterialIcons>
+                  size={(wp('5%'), hp('3%'))}></MaterialIcons>
               )}
               label={() => (
-                <Text style={[{fontSize: 18}, {color: colors.text}]}>ورود</Text>
+                <Text
+                  style={[
+                    {fontSize: (wp('2%'), hp('2%'))},
+                    {color: colors.text},
+                  ]}>
+                  ورود
+                </Text>
               )}
               onPress={() => {
                 props.navigation.navigate('Login');
@@ -96,46 +107,58 @@ export default function DrawerContent(props) {
                 <MaterialIcons
                   name="app-registration"
                   color={colors.iconColor}
-                  size={30}></MaterialIcons>
+                  size={(wp('5%'), hp('3%'))}></MaterialIcons>
               )}
               label={() => (
-                <Text style={[{fontSize: 18}, {color: colors.text}]}>
+                <Text
+                  style={[
+                    {fontSize: (wp('2%'), hp('2%'))},
+                    {color: colors.text},
+                  ]}>
                   ثبت نام
                 </Text>
               )}
               onPress={() => {
                 props.navigation.navigate('Register');
               }}></DrawerItem>
-            <DrawerItem
+            {/*  <DrawerItem
               icon={({color, size}) => (
                 <MaterialCommunityIcons
                   name="account-outline"
                   color={colors.iconColor}
-                  size={30}></MaterialCommunityIcons>
+                  size={(wp('5%'), hp('3%'))}></MaterialCommunityIcons>
               )}
               label={() => (
-                <Text style={[{fontSize: 18}, {color: colors.text}]}>
+                <Text
+                  style={[
+                    {fontSize: (wp('2%'), hp('2%'))},
+                    {color: colors.text},
+                  ]}>
                   درباره ما
                 </Text>
               )}
               onPress={() => {
                 props.navigation.navigate('AboutUs');
-              }}></DrawerItem>
-            <DrawerItem
+              }}></DrawerItem> */}
+            {/*  <DrawerItem
               icon={({color, size}) => (
                 <MaterialIcons
                   name="search"
                   color={colors.iconColor}
-                  size={30}></MaterialIcons>
+                  size={(wp('5%'), hp('3%'))}></MaterialIcons>
               )}
               label={() => (
-                <Text style={[{fontSize: 18}, {color: colors.text}]}>
+                <Text
+                  style={[
+                    {fontSize: (wp('2%'), hp('2%'))},
+                    {color: colors.text},
+                  ]}>
                   جستجو
                 </Text>
               )}
               onPress={() => {
                 props.navigation.navigate('Search');
-              }}></DrawerItem>
+              }}></DrawerItem> */}
           </Drawer.Section>
           <Drawer.Section>
             <TouchableRipple
@@ -145,7 +168,7 @@ export default function DrawerContent(props) {
               <View style={styles.preference}>
                 <MaterialCommunityIcons
                   name="moon-waning-crescent"
-                  size={30}
+                  size={(wp('5%'), hp('3%'))}
                   color={colors.iconColor}></MaterialCommunityIcons>
                 <View>
                   <MyTheme></MyTheme>
@@ -161,9 +184,14 @@ export default function DrawerContent(props) {
             <MaterialCommunityIcons
               name="exit-to-app"
               color={colors.iconColor}
-              size={30}></MaterialCommunityIcons>
+              size={(wp('5%'), hp('3%'))}></MaterialCommunityIcons>
           )}
-          label={() => <Text style={{color: colors.text}}>خروج</Text>}
+          label={() => (
+            <Text
+              style={[{fontSize: (wp('2%'), hp('2%'))}, {color: colors.text}]}>
+              خروج
+            </Text>
+          )}
           onPress={() => {
             BackHandler.exitApp();
           }}></DrawerItem>
