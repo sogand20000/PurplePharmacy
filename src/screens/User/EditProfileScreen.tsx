@@ -100,10 +100,9 @@ export const EditProfileScreen = props => {
         callbackNode={fall}
         enabledGestureInteraction={true}
       />
-      <Animated.View
+      <View
         style={{
           margin: 20,
-          opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
         }}>
         <View style={{alignItems: 'center'}}>
           <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
@@ -158,6 +157,7 @@ export const EditProfileScreen = props => {
           <TextInput
             placeholder="نام"
             autoCorrect={false}
+            text
             style={[
               styles.textInput,
               {
@@ -251,7 +251,7 @@ export const EditProfileScreen = props => {
           onPress={() => {}}>
           <Text style={styles.panelButtonTitle}>ذخیره</Text>
         </TouchableOpacity>
-      </Animated.View>
+      </View>
     </View>
   );
 };

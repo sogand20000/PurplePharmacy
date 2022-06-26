@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : -12,
     paddingLeft: 10,
     color: '#05375a',
-    textAlign: 'left',
+    textAlign: 'right',
   },
 });
 export {styles};
