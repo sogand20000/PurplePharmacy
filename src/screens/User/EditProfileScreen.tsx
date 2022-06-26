@@ -15,7 +15,11 @@ import Animated from 'react-native-reanimated';
 import ImagePicker from 'react-native-image-crop-picker';
 import {styles} from './../../assets/style/EditProfileScreenStyle';
 import Profile from '../../assets/images/user.png';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import CustomButton from '../../components/CustomButton';
 const imageUri = Image.resolveAssetSource(Profile).uri;
 
 export const EditProfileScreen = props => {
@@ -118,13 +122,15 @@ export const EditProfileScreen = props => {
                 source={{
                   uri: image,
                 }}
-                style={{height: 100, width: 100}}
-                imageStyle={{borderRadius: 15}}>
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderRadius: 10,
+                  backgroundColor: colors.grey,
+                }}>
                 <View
                   style={{
                     flex: 1,
-                    // justifyContent: 'center',
-                    //alignItems: 'center',
                   }}>
                   <MaterialCommunityIcons
                     name="camera"
@@ -134,22 +140,12 @@ export const EditProfileScreen = props => {
                       opacity: 0.8,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      borderWidth: 1,
-                      borderColor: '#fff',
-                      borderRadius: 10,
                     }}
                   />
                 </View>
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text
-            style={[
-              {marginTop: 10, fontSize: 18, fontWeight: 'bold'},
-              {color: colors.text},
-            ]}>
-            نام و نام خانوادگی
-          </Text>
         </View>
 
         <View style={styles.action}>
@@ -246,11 +242,12 @@ export const EditProfileScreen = props => {
             ]}
           />
         </View>
-        <TouchableOpacity
-          style={[styles.commandButton, {backgroundColor: colors.buttonColor}]}
-          onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>ذخیره</Text>
-        </TouchableOpacity>
+        <CustomButton
+          label={'ذخیره'}
+          onPress={() => {
+            alert('خوش امدید');
+          }}
+        />
       </View>
     </View>
   );

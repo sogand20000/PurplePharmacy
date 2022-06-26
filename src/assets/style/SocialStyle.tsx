@@ -2,10 +2,9 @@ import {StyleSheet} from 'react-native';
 
 const SocialStyle = StyleSheet.create({
   social: {
-    borderColor: '#ddd',
     borderWidth: 2,
     borderRadius: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     paddingVertical: 10,
   },
 

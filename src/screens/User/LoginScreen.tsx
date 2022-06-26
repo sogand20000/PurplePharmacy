@@ -13,6 +13,11 @@ import CustomButton from '../../components/CustomButton';
 import InputField from '../../components/InputFiled';
 import {SocialStyle} from '../../assets/style/SocialStyle';
 import {useTheme} from 'react-native-paper';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import SocialBox from './../../components/SocialBox';
 
 export const LoginScreen = ({navigation}: any) => {
   const {colors} = useTheme();
@@ -26,10 +31,9 @@ export const LoginScreen = ({navigation}: any) => {
           <Image
             source={require('./../../assets/images/login.png')}
             style={{
-              height: 210,
-              width: 220,
-              transform: [{rotate: '-5deg'}],
-              margin: 40,
+              marginTop: 30,
+              height: hp('25%'),
+              width: wp('45%'),
             }}
           />
         </View>
@@ -38,7 +42,7 @@ export const LoginScreen = ({navigation}: any) => {
           icon={
             <MaterialIcons
               name="alternate-email"
-              size={30}
+              size={20}
               color={colors.iconColor}
               style={{marginRight: 5}}
             />
@@ -54,7 +58,7 @@ export const LoginScreen = ({navigation}: any) => {
           icon={
             <MaterialCommunityIcons
               name="key-variant"
-              size={30}
+              size={20}
               color={colors.iconColor}
               style={{marginRight: 5}}
             />
@@ -73,24 +77,9 @@ export const LoginScreen = ({navigation}: any) => {
         />
       </ScrollView>
       <View style={SocialStyle.socialContener}>
-        <TouchableOpacity style={SocialStyle.social}>
-          <MaterialCommunityIcons
-            name="facebook"
-            size={60}
-            color={colors.iconColor}></MaterialCommunityIcons>
-        </TouchableOpacity>
-        <TouchableOpacity style={SocialStyle.social}>
-          <MaterialCommunityIcons
-            name="google"
-            size={60}
-            color={colors.iconColor}></MaterialCommunityIcons>
-        </TouchableOpacity>
-        <TouchableOpacity style={SocialStyle.social}>
-          <MaterialCommunityIcons
-            name="twitter"
-            size={60}
-            color={colors.iconColor}></MaterialCommunityIcons>
-        </TouchableOpacity>
+        <SocialBox icon="facebook"></SocialBox>
+        <SocialBox icon="google"></SocialBox>
+        <SocialBox icon="twitter"></SocialBox>
       </View>
       <View
         style={{

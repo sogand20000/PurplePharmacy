@@ -14,6 +14,11 @@ import CustomButton from '../../components/CustomButton';
 import InputField from '../../components/InputFiled';
 import {useTheme} from 'react-native-paper';
 import {SocialStyle} from '../../assets/style/SocialStyle';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import SocialBox from './../../components/SocialBox';
 
 export const RegisterScreen = ({navigation}: any) => {
   const {colors} = useTheme();
@@ -28,33 +33,24 @@ export const RegisterScreen = ({navigation}: any) => {
             source={require('./../../assets/images/Register.png')}
             style={{
               marginTop: 30,
-              height: 320,
-              width: 500,
+              height: hp('30%'),
+              width: wp('80%'),
             }}
           />
         </View>
-
-        <Text
-          style={[
-            {
-              fontFamily: 'Roboto-Medium',
-              fontSize: 28,
-              fontWeight: '500',
-              color: '#333',
-              marginBottom: 30,
-            },
-            {color: colors.text},
-          ]}>
-          عضویت
-        </Text>
         <View style={SocialStyle.socialContener}>
+          <SocialBox icon="facebook"></SocialBox>
+          <SocialBox icon="google"></SocialBox>
+          <SocialBox icon="twitter"></SocialBox>
+        </View>
+        {/*  <View style={SocialStyle.socialContener}>
           <TouchableOpacity
             style={[SocialStyle.social, {borderColor: colors.buttonColor}]}>
             <Image
               source={require('./../../assets/images/logo-facebookpng-32202.png')}
               style={{
-                height: 60,
-                width: 60,
+                height: hp('5%'),
+                width: wp('8%'),
               }}
             />
           </TouchableOpacity>
@@ -63,8 +59,8 @@ export const RegisterScreen = ({navigation}: any) => {
             <Image
               source={require('./../../assets/images/google-logo-history-png-2598.png')}
               style={{
-                height: 60,
-                width: 60,
+                height: hp('5%'),
+                width: wp('8%'),
               }}></Image>
           </TouchableOpacity>
           <TouchableOpacity
@@ -72,11 +68,11 @@ export const RegisterScreen = ({navigation}: any) => {
             <Image
               source={require('./../../assets/images/logo-twitter-png-5859.png')}
               style={{
-                height: 60,
-                width: 60,
+                height: hp('5%'),
+                width: wp('8%'),
               }}></Image>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <InputField
           lable={'نام'}
           icon={
@@ -171,7 +167,7 @@ export const RegisterScreen = ({navigation}: any) => {
             onPress={() => {
               navigation.navigate('Login');
             }}>
-            <Text style={{color: '#AD40AF', fontWeight: '700'}}>ورود</Text>
+            <Text style={{color: '#AD40AF'}}>ورود</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
