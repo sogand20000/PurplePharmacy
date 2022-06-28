@@ -1,20 +1,10 @@
 import {Box, FlatList, VStack, Spinner, useToast, Divider} from 'native-base';
 import React, {useEffect, useState} from 'react';
-import {Button, Text, TouchableHighlight, View, StyleSheet} from 'react-native';
+import {Text, TouchableHighlight, View, StyleSheet} from 'react-native';
 import {DrugModel} from '../../model/DrugModel';
 import {Alert} from '../../components/alert';
 import {useTheme} from 'react-native-paper';
-
-const styles = StyleSheet.create({
-  englishName: {
-    fontSize: 20,
-    fontWeight: '900',
-    textAlign: 'center',
-  },
-  Divider: {
-    backgroundColor: 'purple',
-  },
-});
+import {styles} from '../../assets/style/items';
 
 export const DrugListScreen = ({navigation, route}: any) => {
   const {colors} = useTheme();
@@ -74,28 +64,27 @@ export const DrugListScreen = ({navigation, route}: any) => {
           <TouchableHighlight
             onPress={() => navigation.navigate('DrugDetail', item.item)}>
             <VStack>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  height: 100,
-                }}>
+              <View style={styles.item}>
                 <Box
                   style={{
                     flex: 1,
-                    padding: 34,
+                    padding: 10,
                     flexDirection: 'row',
-
-                    justifyContent: 'space-evenly',
+                    justifyContent: 'flex-start',
                   }}>
-                  <Text style={[styles.englishName, {color: colors.text}]}>
-                    {item.item.name}
-                  </Text>
+                  <View>
+                    <Text style={[styles.text, {color: colors.text}]}>
+                      نام دارو :
+                    </Text>
+                  </View>
+                  <View>
+                    <Text style={[styles.text, {color: colors.text}]}>
+                      {item.item.name}
+                    </Text>
+                  </View>
                 </Box>
                 <Divider
-                  style={[styles.Divider, {borderColor: colors.iconColor}]}
+                  style={[styles.divider, {borderColor: colors.iconColor}]}
                 />
               </View>
             </VStack>

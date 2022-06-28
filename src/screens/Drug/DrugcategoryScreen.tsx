@@ -8,7 +8,7 @@ import {
   Divider,
 } from 'native-base';
 import React, {useEffect, useState} from 'react';
-import {Button, Text, TouchableHighlight, View} from 'react-native';
+import {Text, TouchableHighlight, View} from 'react-native';
 import {styles} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
 import {DrugCategoryModel} from '../../model/DrugCategoryModel';
@@ -72,12 +72,11 @@ export const DrugcategoryScreen = ({navigation}: any) => {
                 </VStack>
               </Box>
               <Divider
-                style={[styles.Divider, {borderColor: colors.iconColor}]}
+                style={[styles.divider, {borderColor: colors.iconColor}]}
               />
             </VStack>
           </TouchableHighlight>
         )}></FlatList>
-      <Button title="برگشت" onPress={() => navigation.pop()}></Button>
     </View>
   );
 };

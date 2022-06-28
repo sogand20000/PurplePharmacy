@@ -65,7 +65,7 @@ export const DrugDetailScreen = ({navigation, route}: any) => {
           </Heading>
           <Divider style={style.Divider} />
           <Text style={[style.Text, {color: colors.text}]}>
-            {drug.meghdarMasraf}{' '}
+            {drug.meghdarMasraf}
           </Text>
         </Box>
 
@@ -74,13 +74,11 @@ export const DrugDetailScreen = ({navigation, route}: any) => {
             موارد منع مصرف
           </Heading>
           <Divider style={style.Divider} />
-          <Text style={[style.Text, {color: colors.text}]}>
-            {drug.noUsage}{' '}
-          </Text>
+          <Text style={[style.Text, {color: colors.text}]}>{drug.noUsage}</Text>
         </Box>
 
         <Button
-          color="#9254C8"
+          color={colors.buttonColor}
           title="برگشت"
           onPress={() => navigation.pop()}></Button>
       </View>

@@ -31,6 +31,9 @@ import {
 } from 'react-native-responsive-screen';
 const imageUri = Image.resolveAssetSource(Profile).uri;
 export default function DrawerContent(props) {
+  /*   props.navigation.toggleDrawer.color = 'red';
+  console.log(props.navigation.toggleDrawer); */
+
   const {signOut, toggleTheme} = React.useContext(AuthContext);
   const [imageUrl, setImageUrl] = useState(imageUri);
   const {colors} = useTheme();

@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
 export const HomeScreen = ({navigation}: any) => {
   return (
     <ScrollView>

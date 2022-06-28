@@ -1,32 +1,31 @@
 import {StyleSheet} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const style = StyleSheet.create({
   Heading: {
     textAlign: 'center',
-    marginBottom: 5,
+    marginBottom: wp('3%'),
   },
 
   Text: {
     paddingTop: 20,
-    fontSize: 20,
-    marginBottom: 20,
+    fontSize: wp('5%'),
+    marginBottom: wp('6%'),
     textAlign: 'justify',
-    lineHeight: 50,
+    lineHeight: hp('6%'),
   },
 
   Divider: {
-    backgroundColor: 'purple',
-    width: 200,
+    borderWidth: wp('0.3%'),
   },
 
   Box: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'white',
-    marginBottom: 5,
-    marginTop: 20,
-    /*    borderWidth: 6,
-    borderColor: 'purple',
-    borderBottomWidth: 0, */
+    marginBottom: wp('2%'),
+    marginTop: wp('2%'),
   },
 });
 

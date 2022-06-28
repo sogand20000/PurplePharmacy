@@ -9,11 +9,14 @@ import {
   Divider,
   useToast,
 } from 'native-base';
-import {AraghijatModel} from './../../model/AraghijatModel'
-import {style} from './../../assets/style/items'
+import {AraghijatModel} from './../../model/AraghijatModel';
+import {styles} from '../../assets/style/items';
 import {Alert} from '../../components/alert';
+import {useTheme} from 'react-native-paper';
 
 export const AraghijatListScreen = ({navigation}: any) => {
+  const {colors} = useTheme();
+
   const [araghijats, setAraghijats] = useState<AraghijatModel[]>();
   const toast = useToast();
   const [loading, setLoading] = useState(true);
@@ -44,18 +47,27 @@ export const AraghijatListScreen = ({navigation}: any) => {
           <TouchableHighlight
             onPress={() => navigation.navigate('AraghijatDetail', item.item)}>
             <VStack>
-              <VStack style={style.item} direction="row">
-                <Box>
+              <Box style={styles.item} marginTop={5}>
+                <VStack
+                  style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    paddingRight: 10,
+                  }}
+                  marginLeft={5}>
                   <Image
                     source={require('../../assets/images/icons8-teapot-48.png')}
-                    alt="دارو"
+                    alt="عرقیجات"
                   />
-                </Box>
-                <Box>
-                  <Text style={style.parsianName}> {item.item.name}</Text>
-                </Box>
-              </VStack>
-              <Divider style={style.Divider} />
+                  <Text style={[styles.text, {color: colors.text}]}>
+                    {item.item.name}
+                  </Text>
+                </VStack>
+                <VStack></VStack>
+              </Box>
+              <Divider
+                style={[styles.divider, {borderColor: colors.iconColor}]}
+              />
             </VStack>
           </TouchableHighlight>
         )}></FlatList>

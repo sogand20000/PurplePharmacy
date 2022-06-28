@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
-import {
-  TouchableHighlight,
-  Image,
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-} from 'react-native';
+import React from 'react';
+import {TouchableHighlight, Image, View, Text, StyleSheet} from 'react-native';
 import {useTheme} from 'react-native-paper';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const styles = StyleSheet.create({
   itemContainer: {
     alignItems: 'center',
@@ -27,7 +24,7 @@ export const MenuItem = ({img, text, onPress}: any) => {
       <View
         style={[styles.itemContainer, {backgroundColor: colors.backgroundBox}]}>
         <Image source={img} style={styles.itemImage}></Image>
-        <Text style={[styles.itemText, {color: colors.text}]}>{text}</Text>
+        <Text style={[{fontSize: wp('4%')}, {color: colors.text}]}>{text}</Text>
       </View>
     </TouchableHighlight>
   );

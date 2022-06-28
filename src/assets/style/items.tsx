@@ -1,9 +1,12 @@
-import {InputLeftAddon, Row} from 'native-base';
 import {StyleSheet} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const styles = StyleSheet.create({
   text: {
-    margin: 10,
-    fontSize: 20,
+    margin: wp('3%'),
+    fontSize: wp('5%'),
   },
   item: {
     flex: 1,
@@ -11,16 +14,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  itemEnglishName: {margin: 10, fontSize: 20},
+  itemEnglishName: {margin: 10, fontSize: wp('4%')},
   parsianName: {
-    marginTop: 10,
-    marginLeft: 10,
-    fontSize: 16,
-    //  fontWeight: '900',
+    marginTop: wp('3%'),
+    marginLeft: wp('3%'),
+
+    fontSize: wp('2%'),
   },
-  Divider: {
-    borderWidth: 2,
-    //borderColor: 'purple',
+  divider: {
+    borderWidth: wp('0.3%'),
   },
 });
 

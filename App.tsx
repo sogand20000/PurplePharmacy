@@ -27,7 +27,6 @@ import {Alert} from './src/components/alert';
 const Tab = createBottomTabNavigator();
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
-import {style} from './src/assets/style/items';
 import DrawerContent from './src/screens/Navigation/DrawerContent';
 import {AuthContext} from './src/components/context';
 import {
@@ -40,11 +39,15 @@ import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
+import colors from 'native-base/lib/typescript/theme/base/colors';
 
 const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator
+      screenOptions={{
+        headerTintColor: '#af64b0',
+      }}
       drawerContent={props => <DrawerContent {...props}></DrawerContent>}>
       <Drawer.Screen name="خانه" component={HomeScreen} />
     </Drawer.Navigator>
@@ -69,7 +72,7 @@ const App = () => {
       text: '#333333',
       iconColor: '#af64b0',
       buttonColor: '#AD40AF',
-      backgroundBox: '#CCCCFF',
+      backgroundBox: '#af64b0',
     },
   };
 
@@ -153,16 +156,19 @@ const App = () => {
           <NavigationContainer theme={theme}>
             <Stack.Navigator
               screenOptions={{
-                //headerShown: false,
+                //  headerShown: false,
                 headerStyle: {
                   backgroundColor: theme.colors.backgroundBox,
                 },
                 headerTitleStyle: {
                   color: theme.colors.text,
                 },
-                headerTintColor: 'black',
               }}>
-              <Stack.Screen name="پزشک بنفش" component={MyDrawer} />
+              <Stack.Screen
+                name="پزشک بنفش"
+                component={MyDrawer}
+                options={{headerShown: false}}
+              />
               <Stack.Screen
                 name="HomeScreen"
                 options={{title: 'گروه بندی داروها'}}
