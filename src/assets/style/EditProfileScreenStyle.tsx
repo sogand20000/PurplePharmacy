@@ -1,8 +1,14 @@
 import {StyleSheet} from 'react-native';
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginHorizontal: 10,
+    //marginLeft: 10,
+    // marginTop: 10,
   },
   commandButton: {
     padding: 15,
@@ -15,7 +21,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#FFFFFF',
     paddingTop: 20,
-    // borderTopLeftRadius: 20,
+    //borderTopLeftRadius: 20,
     // borderTopRightRadius: 20,
     // shadowColor: '#000000',
     // shadowOffset: {width: 0, height: 0},

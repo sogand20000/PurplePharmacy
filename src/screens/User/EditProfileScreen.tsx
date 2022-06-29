@@ -1,254 +1,86 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ImageBackground,
-  TextInput,
-  Image,
-} from 'react-native';
-import {useTheme} from 'react-native-paper';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import BottomSheet from 'reanimated-bottom-sheet';
-import Animated from 'react-native-reanimated';
-import ImagePicker from 'react-native-image-crop-picker';
+import React from 'react';
+import {View} from 'react-native';
 import {styles} from './../../assets/style/EditProfileScreenStyle';
-import Profile from '../../assets/images/user.png';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import CustomButton from '../../components/CustomButton';
-const imageUri = Image.resolveAssetSource(Profile).uri;
+import {useForm} from 'react-hook-form';
+import CustomInput from './../../components/CustomInput';
+import {CustomBottomSheet} from '../../components/CustomBottomSheet';
 
 export const EditProfileScreen = props => {
-  const [image, setImage] = useState(imageUri);
-
-  const {colors} = useTheme();
-  const bs = React.createRef();
-  const fall = new Animated.Value(5);
-
-  const takePhotoFromCamera = () => {
-    ImagePicker.openCamera({
-      compressImageMaxWidth: 300,
-      compressImageMaxHeight: 300,
-      cropping: true,
-      compressImageQuality: 0.7,
-    })
-      .then(image => {
-        setImage(image.path);
-        //  bs.current.snapTo(1);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const choosePhotoFromLibrary = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 300,
-      cropping: true,
-      compressImageQuality: 0.7,
-    })
-      .then(image => {
-        setImage(image.path);
-        // bs.current.snapTo(1);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const renderInner = () => (
-    <View style={styles.panel}>
-      <View style={{alignItems: 'center'}}>
-        <Text style={styles.panelTitle}>آپلود عکس</Text>
-        <Text style={styles.panelSubtitle}>انتخاب عکس پروفایل</Text>
-      </View>
-      <TouchableOpacity
-        style={[styles.panelButton, {backgroundColor: colors.buttonColor}]}
-        onPress={takePhotoFromCamera}>
-        <Text style={styles.panelButtonTitle}>دوربین</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.panelButton, {backgroundColor: colors.buttonColor}]}
-        onPress={choosePhotoFromLibrary}>
-        <Text style={styles.panelButtonTitle}>انتخاب از گالری</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.panelButton, {backgroundColor: colors.buttonColor}]}
-        onPress={() => bs.current.snapTo(1)}>
-        <Text style={styles.panelButtonTitle}>برگشت</Text>
-      </TouchableOpacity>
-    </View>
-  );
-
-  const renderHeader = () => (
-    <View style={styles.header}>
-      <View style={styles.panelHeader}>
-        <View style={styles.panelHandle} />
-      </View>
-    </View>
-  );
-
+  ///Validatin
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      Phone: '',
+      Email: '',
+    },
+  });
+  const onSubmit = data => console.log(data);
+  ///
   return (
     <View style={styles.container}>
-      <BottomSheet
-        ref={bs}
-        snapPoints={[350, 0]}
-        renderContent={renderInner}
-        renderHeader={renderHeader}
-        initialSnap={1}
-        callbackNode={fall}
-        enabledGestureInteraction={true}
-      />
-      <View
-        style={{
-          margin: 20,
-        }}>
-        <View style={{alignItems: 'center'}}>
-          <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
-            <View
-              style={{
-                height: 100,
-                width: 100,
-                borderRadius: 15,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ImageBackground
-                source={{
-                  uri: image,
-                }}
-                style={{
-                  height: 100,
-                  width: 100,
-                  borderRadius: 10,
-                  backgroundColor: colors.grey,
-                }}>
-                <View
-                  style={{
-                    flex: 1,
-                  }}>
-                  <MaterialCommunityIcons
-                    name="camera"
-                    size={35}
-                    color={colors.iconColor}
-                    style={{
-                      opacity: 0.8,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  />
-                </View>
-              </ImageBackground>
-            </View>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.action}>
-          <SimpleLineIcons name="user" color={colors.iconColor} size={20} />
-          <TextInput
-            placeholder="نام"
-            autoCorrect={false}
-            text
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <View style={styles.action}>
-          <SimpleLineIcons name="user" color={colors.iconColor} size={20} />
-          <TextInput
-            placeholder="نام خانوادگی"
-            placeholderTextColor={colors.placeholderTextColor}
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <View style={styles.action}>
-          <MaterialCommunityIcons
-            name="phone"
-            color={colors.iconColor}
-            size={20}
-          />
-          <TextInput
-            placeholder="تلفن"
-            placeholderTextColor={colors.placeholderTextColor}
-            keyboardType="number-pad"
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <View style={styles.action}>
-          <SimpleLineIcons name="envelope" color={colors.iconColor} size={20} />
-          <TextInput
-            placeholder="ایمیل"
-            placeholderTextColor={colors.placeholderTextColor}
-            keyboardType="email-address"
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <View style={styles.action}>
-          <SimpleLineIcons name="globe" color={colors.iconColor} size={20} />
-          <TextInput
-            placeholder="کشور"
-            placeholderTextColor={colors.placeholderTextColor}
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <View style={styles.action}>
-          <MaterialCommunityIcons
-            name="map-marker-outline"
-            color={colors.iconColor}
-            size={20}
-          />
-          <TextInput
-            placeholder="شهر"
-            placeholderTextColor={colors.placeholderTextColor}
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
-        <CustomButton
-          label={'ذخیره'}
-          onPress={() => {
-            alert('خوش امدید');
-          }}
-        />
-      </View>
+      <CustomBottomSheet></CustomBottomSheet>
+      <CustomInput
+        control={control}
+        error={errors.firstName}
+        name={'firstName'}
+        placeholder={'نام'}
+        rules={{
+          required: 'نام را وارد کنید',
+          maxLength: {value: 100, message: 'حداکثر 100 کاراکتر وارد کنید'},
+          pattern: {
+            value: /^[A-Za-z]+$/i,
+            message: 'فرمت وارد شده صحیح نیست',
+          },
+        }}
+        icon={'user'}></CustomInput>
+      <CustomInput
+        control={control}
+        error={errors.lastName}
+        name={'lastName'}
+        placeholder={'نام خانوادگی'}
+        rules={{
+          required: 'نام خانوادگی را وارد کنید',
+          maxLength: {value: 100, message: 'حداکثر 100 کاراکتر وارد کنید'},
+          pattern: {
+            value: /^[A-Za-z]+$/i,
+            message: 'فرمت وارد شده صحیح نیست',
+          },
+        }}
+        icon={'user'}></CustomInput>
+      <CustomInput
+        control={control}
+        error={errors.Phone}
+        name={'Phone'}
+        placeholder={'تلفن'}
+        rules={{
+          required: 'َشماره همراه خود را وارد کنید',
+          maxLength: {value: 10, message: 'حداکثر 10 عدد وارد کنید'},
+          pattern: {
+            value: /^[0-9+-]+$/,
+            message: 'فرمت وارد شده را صحیح نیست',
+          },
+        }}
+        icon={'phone'}></CustomInput>
+      <CustomInput
+        control={control}
+        error={errors.Email}
+        name={'Email'}
+        placeholder={'ایمیل'}
+        rules={{
+          required: 'ایمیل خود را وارد کنید',
+          pattern: {
+            value: /^\S+@\S+$/i,
+            message: 'فرمت وارد شده اشتباه است',
+          },
+        }}
+        icon={'envelope'}></CustomInput>
+      <CustomButton label={'ذخیره'} onPress={handleSubmit(onSubmit)} />
     </View>
   );
 };
