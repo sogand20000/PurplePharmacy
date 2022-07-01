@@ -58,8 +58,8 @@ export const HomeScreen = ({navigation}: any) => {
           onPress={() => navigation.navigate('DrugcategoryScreen')}></MenuItem>
         <MenuItem
           img={require('../assets/images/icons8-teapot-48.png')}
-          text={'دمنوش'}
-          onPress={() => navigation.navigate('DrugcategoryScreen')}></MenuItem>
+          text={'Counter'}
+          onPress={() => navigation.navigate('Counter')}></MenuItem>
       </View>
     </ScrollView>
   );

@@ -17,6 +17,7 @@
     "@react-navigation/drawer": "^6.4.1",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.1",
+    "@reduxjs/toolkit": "^1.8.2",
     "@types/react-native": "^0.67.3",
     "axios": "^0.26.1",
     "native-base": "^3.3.11",
@@ -34,7 +35,9 @@
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.1.0",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
+    "react-redux": "^8.0.2",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

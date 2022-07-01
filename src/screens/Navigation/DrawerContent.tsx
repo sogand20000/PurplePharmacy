@@ -85,7 +85,6 @@ export default function DrawerContent(props) {
               onPress={() => {
                 props.navigation.navigate('HomeScreen');
               }}></DrawerItem>
-
             <DrawerItem
               icon={({color, size}) => (
                 <MaterialIcons
@@ -124,6 +123,26 @@ export default function DrawerContent(props) {
               onPress={() => {
                 props.navigation.navigate('Register');
               }}></DrawerItem>
+            <DrawerItem
+              icon={({color, size}) => (
+                <MaterialIcons
+                  name="app-registration"
+                  color={colors.iconColor}
+                  size={(wp('5%'), hp('3%'))}></MaterialIcons>
+              )}
+              label={() => (
+                <Text
+                  style={[
+                    {fontSize: (wp('2%'), hp('2%'))},
+                    {color: colors.text},
+                  ]}>
+                  درباره ما
+                </Text>
+              )}
+              onPress={() => {
+                props.navigation.navigate('AboutUs');
+              }}></DrawerItem>
+
             {/*  <DrawerItem
               icon={({color, size}) => (
                 <MaterialCommunityIcons

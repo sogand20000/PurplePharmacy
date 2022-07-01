@@ -14,6 +14,7 @@ import {
   RegisterScreen,
   ProfileScreen,
   EditProfileScreen,
+  Counter,
 } from './src/screens';
 import {NativeBaseProvider, useToast} from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
@@ -40,7 +41,8 @@ import {
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 import colors from 'native-base/lib/typescript/theme/base/colors';
-
+import {Provider} from 'react-redux';
+import store from './src/components/app/store';
 const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
@@ -150,85 +152,92 @@ const App = () => {
   });
 
   return (
-    <PaperProvider theme={theme}>
-      <AuthContext.Provider value={authContext}>
-        <NativeBaseProvider>
-          <NavigationContainer theme={theme}>
-            <Stack.Navigator
-              screenOptions={{
-                //  headerShown: false,
-                headerStyle: {
-                  backgroundColor: theme.colors.backgroundBox,
-                },
-                headerTitleStyle: {
-                  color: theme.colors.text,
-                },
-              }}>
-              <Stack.Screen
-                name="پزشک بنفش"
-                component={MyDrawer}
-                options={{headerShown: false}}
-              />
-              <Stack.Screen
-                name="HomeScreen"
-                options={{title: 'گروه بندی داروها'}}
-                component={HomeScreen}
-              />
-              <Stack.Screen
-                name="DrugcategoryScreen"
-                options={{title: 'گروه بندی داروها'}}
-                component={DrugcategoryScreen}
-              />
-              <Stack.Screen
-                name="DrugList"
-                options={{title: 'داروها'}}
-                component={DrugListScreen}
-              />
-              <Stack.Screen
-                name="DrugDetail"
-                options={{title: 'جزییات'}}
-                component={DrugDetailScreen}
-              />
-              <Stack.Screen
-                name="AraghijatList"
-                options={{title: 'عرقیجات'}}
-                component={AraghijatListScreen}
-              />
-              <Stack.Screen
-                name="AraghijatDetail"
-                options={{title: 'عرقیجات'}}
-                component={AraghijatDetailScreen}
-              />
-              <Stack.Screen
-                name="Login"
-                options={{title: 'ورود'}}
-                component={LoginScreen}
-              />
-              <Stack.Screen
-                name="Register"
-                options={{title: 'ثبت نام'}}
-                component={RegisterScreen}
-              />
-              <Stack.Screen
-                name="AboutUs"
-                options={{title: 'درباره ما'}}
-                component={AboutUsScreen}
-              />
-              <Stack.Screen
-                name="Profile"
-                options={{title: 'پروفایل'}}
-                component={ProfileScreen}
-              />
-              <Stack.Screen
-                name="EditProfile"
-                options={{title: 'ویرایش پروفایل'}}
-                component={EditProfileScreen}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </NativeBaseProvider>
-      </AuthContext.Provider>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        <AuthContext.Provider value={authContext}>
+          <NativeBaseProvider>
+            <NavigationContainer theme={theme}>
+              <Stack.Navigator
+                screenOptions={{
+                  //  headerShown: false,
+                  headerStyle: {
+                    backgroundColor: theme.colors.backgroundBox,
+                  },
+                  headerTitleStyle: {
+                    color: theme.colors.text,
+                  },
+                }}>
+                <Stack.Screen
+                  name="پزشک بنفش"
+                  component={MyDrawer}
+                  options={{headerShown: false}}
+                />
+                <Stack.Screen
+                  name="HomeScreen"
+                  options={{title: 'گروه بندی داروها'}}
+                  component={HomeScreen}
+                />
+                <Stack.Screen
+                  name="DrugcategoryScreen"
+                  options={{title: 'گروه بندی داروها'}}
+                  component={DrugcategoryScreen}
+                />
+                <Stack.Screen
+                  name="DrugList"
+                  options={{title: 'داروها'}}
+                  component={DrugListScreen}
+                />
+                <Stack.Screen
+                  name="DrugDetail"
+                  options={{title: 'جزییات'}}
+                  component={DrugDetailScreen}
+                />
+                <Stack.Screen
+                  name="AraghijatList"
+                  options={{title: 'عرقیجات'}}
+                  component={AraghijatListScreen}
+                />
+                <Stack.Screen
+                  name="AraghijatDetail"
+                  options={{title: 'عرقیجات'}}
+                  component={AraghijatDetailScreen}
+                />
+                <Stack.Screen
+                  name="Login"
+                  options={{title: 'ورود'}}
+                  component={LoginScreen}
+                />
+                <Stack.Screen
+                  name="Register"
+                  options={{title: 'ثبت نام'}}
+                  component={RegisterScreen}
+                />
+                <Stack.Screen
+                  name="AboutUs"
+                  options={{title: 'درباره ما'}}
+                  component={AboutUsScreen}
+                />
+                <Stack.Screen
+                  name="Profile"
+                  options={{title: 'پروفایل'}}
+                  component={ProfileScreen}
+                />
+                <Stack.Screen
+                  name="EditProfile"
+                  options={{title: 'ویرایش پروفایل'}}
+                  component={EditProfileScreen}
+                />
+                <Stack.Screen
+                  name="Counter"
+                  options={{title: 'Counter'}}
+                  component={Counter}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </NativeBaseProvider>
+        </AuthContext.Provider>
+      </PaperProvider>
+    </Provider>
   );
 };
 export default App;

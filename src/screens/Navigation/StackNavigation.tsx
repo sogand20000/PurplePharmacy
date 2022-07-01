@@ -27,7 +27,6 @@ const StackNavigation = ({navigation}: any) => {
             backgroundColor: 'yellow',
           },
           headerTintColor: 'black',
-          // headerShown: false,
         }}>
         <Stack.Screen
           name="HomeScreen"
